@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TODONOVO Inicio</title>
+<title>TODONOVO Contacto</title>
 <link rel="icon" href="img/logo.png">
 <style>[hidden]{display:none!important}</style>
 </head>
@@ -436,6 +436,97 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .mnav .suggest a{border-bottom:0;padding:8px;font-size:15px}
 
 </style>
+<style>
+/* ===== Contacto ===== */
+.nav > a[aria-current="page"]{color:var(--ink);font-weight:700}
+.crumbs{font-family:var(--font-text);font-size:14px;color:var(--muted);padding-block:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;gap:8px;align-items:center}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.crumbs li + li::before{content:"›";margin-right:8px;color:var(--muted)}
+.crumbs [aria-current]{color:var(--ink-strong);font-weight:500}
+
+.c-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:20px 32px}
+.c-head h1{font-size:50px;line-height:1.05}
+.c-head p{font-family:var(--font-text);font-size:18px;color:var(--ink-strong);max-width:56ch;margin-top:12px}
+.live{display:inline-flex;align-items:center;gap:10px;height:44px;padding-inline:16px;border-radius:999px;font-family:var(--font-text);font-size:15px;font-weight:500;white-space:nowrap}
+.live.is-open{background:#C4FEE0;color:#0B5A3A}
+.live.is-closed{background:var(--surface-soft);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.live .pulse{width:10px;height:10px;border-radius:999px;background:currentColor;flex:none}
+@media (prefers-reduced-motion:no-preference){.live.is-open .pulse{animation:pulse 1.8s ease-out infinite}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(11,90,58,.45)}100%{box-shadow:0 0 0 10px rgba(11,90,58,0)}}}
+
+.c-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:start;padding-bottom:clamp(56px,7vw,96px)}
+
+/* 1. Formulario */
+.c-form{border:1px solid var(--line);border-radius:24px;padding:clamp(24px,3vw,40px);background:var(--bg);display:grid;gap:20px}
+.c-form h2{font-size:clamp(28px,2.78vw,40px)}
+.c-form .lead{font-family:var(--font-text);color:var(--muted);font-size:15px;margin-top:-10px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:6px;font-family:var(--font-text)}
+.field label{font-size:14px;font-weight:600;color:var(--ink-strong)}
+.field label span{font-weight:400;color:var(--muted)}
+.field input,.field textarea{width:100%;font:inherit;font-family:var(--font-text);font-size:16px;color:var(--ink-strong);background:var(--surface-soft);border:1.5px solid var(--line);border-radius:var(--r-input);padding:12px 14px;transition:border-color .2s,background-color .2s}
+.field input{height:50px}
+.field textarea{min-height:150px;resize:vertical;line-height:1.5}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink);background:var(--bg)}
+.field .help{font-size:13px;color:var(--muted)}
+.field .err{font-size:13px;color:#A23A12;display:flex;gap:6px;align-items:center}
+.field.has-error input,.field.has-error textarea{border-color:#C2541F}
+.count{justify-self:end;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.f-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.f-actions .btn{height:52px}
+.f-actions small{font-family:var(--font-text);font-size:14px;color:var(--muted)}
+.btn-outline{border:1.5px solid var(--btn-bg);color:var(--ink);background:transparent}
+.btn-outline:hover{background:var(--surface-soft)}
+.sent{display:grid;justify-items:start;gap:12px;padding:12px 0}
+.sent .ic{width:64px;height:64px;border-radius:999px;background:#C4FEE0;color:#0B5A3A;display:grid;place-items:center}
+.sent .ic .icon{width:32px;height:32px}
+.sent h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:32px;color:var(--ink);line-height:1}
+.sent p{font-family:var(--font-text);color:var(--ink-strong);max-width:46ch}
+
+/* 2 y 3. Canales y horario en un panel cobalto */
+.c-side{display:grid;gap:16px}
+.channels{background:#004AAD;color:#fff;border-radius:24px;padding:clamp(24px,3vw,36px);display:grid;gap:14px}
+.channels h2{color:#fff;font-size:clamp(28px,2.78vw,40px)}
+.ch{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;padding:14px;border-radius:16px;background:rgba(255,255,255,.08);color:#fff;transition:background-color .2s}
+a.ch:hover{background:rgba(255,255,255,.14)}
+.ch .ic{width:48px;height:48px;border-radius:999px;display:grid;place-items:center;background:rgba(196,254,224,.16);color:#C4FEE0}
+.ch strong{display:block;font-size:16px}
+.ch span{font-family:var(--font-text);font-size:14px;color:rgba(255,255,255,.82);word-break:break-word}
+.ch .go{color:#C4FEE0}
+.ch.ch-wa{background:#A5F500;color:#0A2B63}
+.ch.ch-wa .ic{background:#0A2B63;color:#A5F500}
+.ch.ch-wa span{color:#0A2B63}
+.ch.ch-wa .go{color:#0A2B63}
+a.ch.ch-wa:hover{background:#B8FF2A}
+.ch-copy{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;color:#C4FEE0}
+.ch-copy:hover{background:rgba(255,255,255,.14)}
+.socials-row{display:flex;gap:8px;flex-wrap:wrap}
+.socials-row a{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:14px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-weight:500}
+.socials-row a:hover{background:rgba(255,255,255,.16)}
+.toast{font-family:var(--font-text);font-size:13px;color:#C4FEE0;min-height:18px}
+
+.hours{border-radius:24px;background:#C4FEE0;color:#0A2B63;padding:clamp(24px,3vw,32px);display:grid;gap:14px}
+.hours h2{color:#0A2B63;font-size:clamp(24px,2.2vw,32px);display:flex;align-items:center;gap:10px}
+.hours h2 .icon{width:28px;height:28px}
+.days{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-family:var(--font-text)}
+.days li{display:flex;justify-content:space-between;gap:12px;padding:8px 12px;border-radius:10px;font-size:15px}
+.days li span:last-child{font-variant-numeric:tabular-nums;font-weight:500}
+.days li.today{background:#fff;font-weight:600;box-shadow:0 4px 12px rgba(10,43,99,.08)}
+.days li.off span:last-child{color:#4B6690;font-weight:400}
+.hours p{font-family:var(--font-text);font-size:14px;color:#24456F}
+
+@media (max-width:1023px){
+  .c-grid{grid-template-columns:1fr}
+}
+@media (max-width:767px){
+  .c-head h1{font-size:34px}
+  .c-head p{font-size:16px}
+  .f-row{grid-template-columns:1fr}
+  .f-actions .btn{width:100%}
+}
+</style>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-arrow-left" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
@@ -461,8 +552,16 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 <symbol id="i-user" viewBox="0 0 256 256" fill="currentColor"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
 <symbol id="i-whatsapp-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
 <symbol id="i-x" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 256 256" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+<symbol id="i-chats-circle" viewBox="0 0 256 256" fill="currentColor"><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></symbol>
+<symbol id="i-caret-left" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
+<symbol id="i-envelope-simple" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+<symbol id="i-paper-plane-tilt" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 256 256" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+<symbol id="i-warning-circle" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 256 256" fill="currentColor"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></symbol>
 </svg>
-
 
 <div class="topbar">Despacho a todo Chile · Retiro en punto sin costo</div>
 
@@ -470,10 +569,10 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 
 <header class="header" id="header">
   <div class="container header-inner">
-    <a class="logo" href="#inicio" aria-label="TODONOVO, ir al inicio"><img src="img/logo.png" alt="TODONOVO, Renueva tu mundo" width="500" height="439"></a>
+    <a class="logo" href="index.html" aria-label="TODONOVO, ir al inicio"><img src="img/logo.png" alt="TODONOVO, Renueva tu mundo" width="500" height="439"></a>
     <div class="logo-space" aria-hidden="true"></div>
     <nav class="nav" aria-label="Principal">
-      <a href="#inicio" aria-current="page">Inicio</a>
+      <a href="index.html">Inicio</a>
       <div class="nav-drop" id="drop">
         <a href="tienda.html">Tienda</a><button type="button" id="dropBtn" aria-expanded="false" aria-controls="dropPanel" aria-label="Ver categorías de la tienda"><svg class="icon-sm"><use href="#i-caret-down"/></svg></button>
         <div class="drop-panel" id="dropPanel" hidden>
@@ -487,7 +586,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
       </div>
       <a href="quienes-somos.html">Quiénes somos</a>
       <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="#contacto" aria-current="page">Contacto</a>
     </nav>
     <div class="header-tools">
       <form class="search" role="search" id="searchForm">
@@ -507,166 +606,102 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
         <svg class="icon"><use href="#i-magnifying-glass"/></svg>
         <input id="qm" type="search" placeholder="Buscar productos" autocomplete="off">
       </form>
-      <a href="#inicio">Inicio</a>
+      <a href="index.html">Inicio</a>
       <a href="tienda.html">Tienda <svg class="icon-sm"><use href="#i-caret-right"/></svg></a>
       <a href="quienes-somos.html">Quiénes somos</a>
       <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="#contacto">Contacto</a>
       <a href="#pie">Iniciar sesión</a>
     </div>
   </div>
 </header>
 
-<main id="inicio">
+<main id="contacto">
+  <nav class="container crumbs" aria-label="Ruta de navegación">
+    <ol><li><a href="index.html">Inicio</a></li><li><span aria-current="page">Contacto</span></li></ol>
+  </nav>
 
-  <section class="hero" id="hero" aria-roledescription="carrusel" aria-labelledby="heroTitle" data-tone="dark" style="--slide-bg:#004AAD">
-    <div class="slides">
-      <div class="slide is-active" id="slide-0" role="tabpanel" aria-label="Hogar" data-bg="#004AAD" data-tone="dark" style="--s-bg:#004AAD">
-        <a class="slide-scene" href="tienda.html#hogar" tabindex="-1" aria-label="Ver Hogar"><picture><source media="(max-width: 767px)" srcset="img/hero-scene-hogar-m.jpg" width="900" height="1613"><img src="img/hero-scene-hogar.jpg" alt="Cocina con muro azul, desayunador 3 en 1 sobre el mesón y ampolleta de colores colgando" width="2000" height="1125" fetchpriority="high"></picture></a>
+  <div class="container">
+    <header class="c-head">
+      <div>
+        <h1>Contacto</h1>
+        <p>Escríbenos por un pedido, un producto o una devolución. Contestamos dentro de un día hábil.</p>
       </div>
-      <div class="slide" id="slide-1" role="tabpanel" aria-label="Tendencias" data-bg="#FF8A3D" data-tone="light" style="--s-bg:#FF8A3D">
-        <a class="slide-scene" href="tienda.html#tendencias" tabindex="-1" aria-label="Ver Tendencias"><picture><source media="(max-width: 767px)" srcset="img/hero-scene-tendencias-m.jpg" width="900" height="1613"><img src="img/hero-scene-tendencias.jpg" alt="Lentes con IA flotando frente a un arco naranja y lámpara luna 3D encendida sobre un podio" width="2000" height="1125" loading="lazy"></picture></a>
-      </div>
-      <div class="slide" id="slide-2" role="tabpanel" aria-label="Bienestar" data-bg="#1E8A5A" data-tone="dark" style="--s-bg:#1E8A5A">
-        <a class="slide-scene" href="tienda.html#bienestar" tabindex="-1" aria-label="Ver Bienestar"><picture><source media="(max-width: 767px)" srcset="img/hero-scene-bienestar-m.jpg" width="900" height="1613"><img src="img/hero-scene-bienestar.jpg" alt="Masajeador de cuello y masajeador facial sobre escalones verdes junto a una ventana con cielo" width="2000" height="1125" loading="lazy"></picture></a>
-      </div>
-      <div class="slide" id="slide-3" role="tabpanel" aria-label="Outdoor" data-bg="#FFEE2A" data-tone="light" style="--s-bg:#FFEE2A">
-        <a class="slide-scene" href="tienda.html#outdoor" tabindex="-1" aria-label="Ver Outdoor"><picture><source media="(max-width: 767px)" srcset="img/hero-scene-outdoor-m.jpg" width="900" height="1613"><img src="img/hero-scene-outdoor.jpg" alt="Botella plegable tipo balón, linterna solar, cargador solar y pulsera sobre bloques amarillos con cielo" width="2000" height="1125" loading="lazy"></picture></a>
-      </div>
-      <div class="slide" id="slide-4" role="tabpanel" aria-label="Viajes" data-bg="#8FD3F4" data-tone="light" style="--s-bg:#8FD3F4">
-        <a class="slide-scene" href="tienda.html#viajes" tabindex="-1" aria-label="Ver Viajes"><picture><source media="(max-width: 767px)" srcset="img/hero-scene-viajes-m.jpg" width="900" height="1613"><img src="img/hero-scene-viajes.jpg" alt="Almohada de viaje, organizador de maleta y bolsa de agua plegable flotando frente a una ventana de avión" width="2000" height="1125" loading="lazy"></picture></a>
-      </div>
-    </div>
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow">Novedades de la semana</span>
-        <h1 id="heroTitle">Redescubre tu comodidad y bienestar con ideas que funcionan</h1>
-        <p>Productos novedosos y funcionales para viajar, ordenar la casa y salir. Probamos cada uno antes de publicarlo.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-hero" href="#destacados">Ver destacados</a>
-          <a class="btn btn-hero-ghost" href="#confianza">Cómo compramos</a>
+      <span class="live is-closed" id="live"><span class="pulse" aria-hidden="true"></span><span id="liveText">Revisando horario</span></span>
+    </header>
+
+    <div class="c-grid">
+      <section class="c-form" aria-labelledby="formTitle">
+        <h2 id="formTitle">Envíanos un mensaje</h2>
+        <form id="contactForm" novalidate>
+          <div style="display:grid;gap:18px">
+            <div class="f-row">
+              <div class="field" data-f="name"><label for="cName">Nombre</label><input id="cName" name="name" type="text" autocomplete="name" placeholder="Tu nombre"><span class="err" hidden></span></div>
+              <div class="field" data-f="email"><label for="cEmail">Correo</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="nombre@correo.cl"><span class="err" hidden></span></div>
+            </div>
+            <div class="field" data-f="phone">
+              <label for="cPhone">Teléfono <span>(opcional)</span></label>
+              <input id="cPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+56 9 0000 0000">
+              <span class="help">Si tu consulta es por un pedido en curso, te respondemos por WhatsApp.</span>
+              <span class="err" hidden></span>
+            </div>
+            <div class="field" data-f="msg">
+              <label for="cMsg">Mensaje</label>
+              <textarea id="cMsg" name="msg" maxlength="600" placeholder="Cuéntanos en qué te ayudamos. Si es por un pedido, incluye el número."></textarea>
+              <span class="count" id="cCount">0 / 600</span>
+              <span class="err" hidden></span>
+            </div>
+            <div class="f-actions">
+              <button class="btn btn-primary" type="submit"><svg class="icon-sm"><use href="#i-paper-plane-tilt"/></svg>Enviar mensaje</button>
+              <small>Contestamos dentro de un día hábil</small>
+            </div>
+          </div>
+        </form>
+        <div class="sent" id="sent" hidden aria-live="polite">
+          <span class="ic"><svg class="icon"><use href="#i-check-circle"/></svg></span>
+          <h3>Mensaje recibido</h3>
+          <p id="sentText">Te contestamos dentro de un día hábil.</p>
+          <button class="btn btn-outline" type="button" id="again" style="width:auto">Enviar otro mensaje</button>
         </div>
-      </div>
-    </div>
-    <div class="slider-ctrl">
-      <div class="tabs" role="tablist" aria-label="Categorías del banner">
-        <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="slide-0">Hogar</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="slide-1">Tendencias</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="slide-2">Bienestar</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="slide-3">Outdoor</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="slide-4">Viajes</button>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="section container" id="categorias" aria-labelledby="catTitle">
-    <div class="section-head">
-      <h2 id="catTitle">Compra por categoría</h2>
-      <a class="link-more" href="tienda.html">Ver todo el catálogo <svg class="icon-sm"><use href="#i-caret-right"/></svg></a>
-    </div>
-    <div class="cats">
-      <a class="cat" href="tienda.html#viajes"><h3>Viajes</h3><span>12 productos</span><img src="img/cat-viajes.png" alt="Almohada de viaje y organizadores de maleta" loading="lazy"><span class="pill">Ver Viajes</span></a>
-      <a class="cat" href="tienda.html#outdoor"><h3>Outdoor</h3><span>9 productos</span><img src="img/cat-outdoor.png" alt="Linterna solar plegable" loading="lazy"><span class="pill">Ver Outdoor</span></a>
-      <a class="cat" href="tienda.html#hogar"><h3>Hogar</h3><span>14 productos</span><img src="img/cat-hogar.png" alt="Desayunador 3 en 1 con horno, plancha y cafetera" loading="lazy"><span class="pill">Ver Hogar</span></a>
-      <a class="cat" href="tienda.html#bienestar"><h3>Bienestar</h3><span>7 productos</span><img src="img/cat-bienestar.png" alt="Masajeador de cuello con calor" loading="lazy"><span class="pill">Ver Bienestar</span></a>
-      <a class="cat" href="tienda.html#tendencias"><h3>Tendencias</h3><span>8 productos</span><img src="img/cat-tendencias.png" alt="Saco de boxeo para gatos con guantes y ventosa" loading="lazy"><span class="pill">Ver Tendencias</span></a>
-    </div>
-  </section>
+      <aside class="c-side" aria-label="Otras formas de contacto">
+        <section class="channels" aria-labelledby="chTitle">
+          <h2 id="chTitle">Canales directos</h2>
+          <a class="ch ch-wa" href="https://wa.me/56957998178" target="_blank" rel="noopener">
+            <span class="ic"><svg class="icon"><use href="#i-whatsapp-logo"/></svg></span>
+            <span><strong>WhatsApp</strong><span>+56 9 5799 8178</span></span>
+            <svg class="icon go" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+          <div class="ch">
+            <span class="ic"><svg class="icon"><use href="#i-envelope-simple"/></svg></span>
+            <span><strong>Correo</strong><span id="mail">ventastodonovo@gmail.com</span></span>
+            <button class="ch-copy" type="button" id="copyMail" aria-label="Copiar correo"><svg class="icon-sm"><use href="#i-copy"/></svg></button>
+          </div>
+          <div class="ch" style="grid-template-columns:48px 1fr">
+            <span class="ic"><svg class="icon"><use href="#i-instagram-logo"/></svg></span>
+            <span><strong>Redes</strong><span>@todonovo.shop en TikTok e Instagram</span></span>
+          </div>
+          <div class="socials-row">
+            <a href="https://www.instagram.com/todonovo.shop" target="_blank" rel="noopener"><svg class="icon-sm"><use href="#i-instagram-logo"/></svg>Instagram</a>
+            <a href="https://www.facebook.com/people/Todonovo/61594793080520/" target="_blank" rel="noopener"><svg class="icon-sm"><use href="#i-facebook-logo"/></svg>Facebook</a>
+            <a href="#contacto" aria-label="TikTok (enlace pendiente)"><svg class="icon-sm"><use href="#i-tiktok-logo"/></svg>TikTok</a>
+          </div>
+          <p class="toast" id="toast" aria-live="polite"></p>
+        </section>
 
-  <section class="section container" id="destacados" aria-labelledby="destTitle" style="padding-top:0">
-    <div class="section-head">
-      <div>
-        <h2 id="destTitle">Destacados</h2>
-        <p>Lo que más se está vendiendo esta semana</p>
-      </div>
-      <a class="link-more" href="tienda.html">Ver todos <svg class="icon-sm"><use href="#i-caret-right"/></svg></a>
+        <section class="hours" aria-labelledby="hTitle">
+          <h2 id="hTitle"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Horario de atención</h2>
+          <ul class="days" id="days">
+            <li data-d="1"><span>Lunes a viernes</span><span>9:00 a 18:00</span></li>
+            <li data-d="6"><span>Sábado</span><span>10:00 a 14:00</span></li>
+            <li data-d="0" class="off"><span>Domingo</span><span>Cerrado</span></li>
+          </ul>
+          <p>Los mensajes fuera de horario se contestan el siguiente día hábil.</p>
+        </section>
+      </aside>
     </div>
-    <div class="grid-4" id="featuredGrid"></div>
-  </section>
-
-  <section class="container" aria-label="Campañas">
-    <div class="mosaic">
-      <a class="tile tile-a" href="tienda.html#outdoor">
-        <img src="img/banner-outdoor.jpg" alt="Linternas solares plegables, una encendida" loading="lazy">
-        <h3>Temporada outdoor</h3>
-        <p>Linternas solares, botellas plegables y lo necesario para salir el fin de semana.</p>
-        <span class="btn btn-lime">Ver Outdoor</span>
-      </a>
-      <a class="tile tile-b" href="tienda.html#viajes">
-        <img src="img/mosaico-viajes.jpg" alt="Maleta abierta con organizadores, almohada de viaje y bolsa de agua" loading="lazy">
-        <h3>Viaja liviano</h3>
-        <p>Organizadores, almohadas y botellas que se pliegan.</p>
-        <span class="btn btn-ice btn-sm">Ver Viajes</span>
-      </a>
-      <a class="tile tile-c" href="tienda.html#hogar">
-        <img src="img/mosaico-hogar.jpg" alt="Desayunador 3 en 1 preparando huevos y café en una cocina" loading="lazy">
-        <h3>Desayuno en un solo equipo</h3>
-        <p>Horno, plancha y cafetera en el mismo aparato.</p>
-        <span class="btn btn-orange btn-sm">Ver Hogar</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="section container" id="nuevos" aria-labelledby="newTitle">
-    <div class="section-head">
-      <div>
-        <h2 id="newTitle">Recién llegados</h2>
-        <p>Los últimos productos que entraron al catálogo</p>
-      </div>
-      <div class="carousel-ctrl">
-        <button class="round" type="button" id="prev" aria-label="Anteriores" disabled><svg class="icon"><use href="#i-arrow-left"/></svg></button>
-        <button class="round" type="button" id="next" aria-label="Siguientes"><svg class="icon"><use href="#i-arrow-right"/></svg></button>
-      </div>
-    </div>
-    <div class="track" id="track"></div>
-  </section>
-
-  <section class="container" aria-labelledby="preTitle">
-    <div class="pre">
-      <div class="pre-media"><img src="img/banner-preventa-lentes.jpg" alt="Lentes con IA y audio flotando sobre fondo azul" loading="lazy"></div>
-      <div class="pre-copy">
-        <span class="badge badge-pre">Preventa</span>
-        <h2 id="preTitle">Lentes con IA, antes que nadie</h2>
-        <p>Escucha música, contesta llamadas y pregunta lo que necesites sin sacar el teléfono. Llegan el 15 de octubre.</p>
-        <span class="pre-label">La preventa cierra en</span>
-        <div class="countdown" id="countdown" aria-live="off">
-          <div><b data-u="d">00</b><small>Días</small></div>
-          <div><b data-u="h">00</b><small>Horas</small></div>
-          <div><b data-u="m">00</b><small>Min</small></div>
-          <div><b data-u="s">00</b><small>Seg</small></div>
-        </div>
-        <button class="btn btn-navy" type="button" data-add="lentes">Reservar por <span class="price">$79.990</span></button>
-      </div>
-    </div>
-  </section>
-
-  <section class="trust" id="confianza" aria-label="Por qué comprar en TODONOVO" style="margin-top:clamp(48px,6vw,80px)">
-    <div class="container">
-      <ul>
-        <li><span class="ic"><svg class="icon"><use href="#i-truck"/></svg></span><div><strong>Despacho a todo Chile</strong><span>2 a 6 días hábiles según zona</span></div></li>
-        <li><span class="ic"><svg class="icon"><use href="#i-credit-card"/></svg></span><div><strong>Paga como quieras</strong><span>Tarjeta, débito o transferencia</span></div></li>
-        <li><span class="ic"><svg class="icon"><use href="#i-arrows-counter-clockwise"/></svg></span><div><strong>Cambios en 10 días</strong><span>Devolución si no te sirve</span></div></li>
-        <li><span class="ic"><svg class="icon"><use href="#i-seal-check"/></svg></span><div><strong>Proveedores certificados</strong><span>Trabajamos con fabricantes verificados</span></div></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section container" id="uso" aria-labelledby="useTitle">
-    <div class="section-head">
-      <div>
-        <h2 id="useTitle">Míralo en uso</h2>
-        <p>Lo que publicamos en TikTok e Instagram, @todonovo.shop</p>
-      </div>
-      <a class="link-more" href="https://www.instagram.com/todonovo.shop" target="_blank" rel="noopener">Seguir <svg class="icon-sm"><use href="#i-caret-right"/></svg></a>
-    </div>
-    <div class="social">
-      <div class="reel"><a class="reel-media" href="#uso" aria-label="Ver video del juguete de boxeo para gatos"><img src="img/social-gato.jpg" alt="Gato golpeando el saco de boxeo con guantes en el living" loading="lazy"><span class="play"><svg class="icon"><use href="#i-play-fill"/></svg></span></a><div class="reel-info"><a href="tienda.html#p-gato">Saco de boxeo para gatos</a><strong>$8.990</strong></div></div>
-      <div class="reel"><a class="reel-media" href="#uso" aria-label="Ver video del masajeador facial"><img src="img/social-facial.jpg" alt="Mujer usando el masajeador facial verde frente al espejo" loading="lazy"><span class="play"><svg class="icon"><use href="#i-play-fill"/></svg></span></a><div class="reel-info"><a href="tienda.html#p-facial">Masajeador facial 3 en 1</a><strong>$24.990</strong></div></div>
-      <div class="reel"><a class="reel-media" href="#uso" aria-label="Ver video de la botella plegable"><img src="img/social-botella.jpg" alt="Mano sosteniendo la botella plegable tipo balón en un sendero de cordillera" loading="lazy"><span class="play"><svg class="icon"><use href="#i-play-fill"/></svg></span></a><div class="reel-info"><a href="tienda.html#p-botella">Botella plegable Fútbol</a><strong>$12.990</strong></div></div>
-      <div class="reel"><a class="reel-media" href="#uso" aria-label="Ver video del masajeador de cuello"><img src="img/social-cuello.jpg" alt="Hombre relajado en el sofá con el masajeador de cuello encendido" loading="lazy"><span class="play"><svg class="icon"><use href="#i-play-fill"/></svg></span></a><div class="reel-info"><a href="tienda.html#p-cuello">Masajeador de cuello</a><strong>$34.900</strong></div></div>
-    </div>
-  </section>
-
+  </div>
 </main>
 
 <footer class="footer" id="pie">
@@ -682,7 +717,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
         </div>
       </div>
       <div><h3>Categorías</h3><ul><li><a href="tienda.html#viajes">Viajes</a></li><li><a href="tienda.html#outdoor">Outdoor</a></li><li><a href="tienda.html#hogar">Hogar</a></li><li><a href="tienda.html#bienestar">Bienestar</a></li><li><a href="tienda.html#tendencias">Tendencias</a></li></ul></div>
-      <div><h3>Información</h3><ul><li><a href="quienes-somos.html">Quiénes somos</a></li><li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+      <div><h3>Información</h3><ul><li><a href="quienes-somos.html">Quiénes somos</a></li><li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
       <div><h3>Legales</h3><ul><li><a href="#pie">Términos y condiciones</a></li><li><a href="#pie">Política de privacidad</a></li><li><a href="#pie">Despacho y entregas</a></li><li><a href="#pie">Cambios y devoluciones</a></li></ul></div>
     </div>
     <div class="footer-bottom">© 2026 TODONOVO. Todos los derechos reservados. Desarrollado por Delta Digital</div>
@@ -711,63 +746,12 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 
 <script>
 (function(){
-  // Catálogo de ejemplo para la maqueta (precios de referencia, no reales)
-  var P = {
-    botella:{name:"Botella plegable Fútbol",cat:"Outdoor",price:12990,img:"img/prod-botella-futbol.jpg",alt:"Botella de agua plegable con diseño de balón de fútbol",state:"ok"},
-    facial:{name:"Masajeador facial 3 en 1",cat:"Bienestar",price:24990,old:29990,img:"img/prod-masajeador-facial.jpg",alt:"Masajeador facial verde con cabezales dorados",state:"low"},
-    ampolleta:{name:"Ampolleta inteligente RGB",cat:"Hogar",price:9990,img:"img/prod-ampolleta.jpg",alt:"Ampolleta LED iluminada con colores",state:"ok"},
-    lentes:{name:"Lentes con IA y audio",cat:"Tendencias",price:79990,img:"img/prod-lentes-ia.jpg",alt:"Lentes negros con cámara y parlantes integrados",state:"pre",date:"15 oct"},
-    bolsa:{name:"Bolsa de agua plegable",cat:"Viajes",price:4990,img:"img/prod-bolsa-agua.jpg",alt:"Bolsa de agua plegable azul con mosquetón",state:"ok"},
-    cuello:{name:"Masajeador de cuello",cat:"Bienestar",price:34900,img:"img/cat-bienestar.jpg",alt:"Masajeador de cuello gris con calor",state:"ok"},
-    desayuno:{name:"Desayunador 3 en 1",cat:"Hogar",price:54990,img:"img/cat-hogar.jpg",alt:"Desayunador con horno, plancha y cafetera",state:"low"},
-    gato:{name:"Saco de boxeo para gatos",cat:"Tendencias",price:8990,img:"img/cat-tendencias.jpg",alt:"Saco de boxeo negro para gatos con dos guantes colgantes y base de ventosa",state:"off"},
-    linterna:{name:"Linterna solar plegable",cat:"Outdoor",price:15600,img:"img/cat-outdoor.jpg",alt:"Linterna solar plegable encendida",state:"ok"},
-    kitviaje:{name:"Almohada de viaje y organizadores",cat:"Viajes",price:19990,old:24990,img:"img/cat-viajes.jpg",alt:"Almohada de viaje sobre tres organizadores de maleta",state:"ok"}
-  };
+  var TIENDA = "tienda.html";
+  var P = [{"id":"botella","name":"Botella plegable Fútbol","cat":"Outdoor","price":12990,"img":"img/prod-botella-futbol.jpg","state":"ok","alt":"Botella de agua plegable con diseño de balón de fútbol"},{"id":"facial","name":"Masajeador facial 3 en 1","cat":"Bienestar","price":24990,"img":"img/prod-masajeador-facial.jpg","state":"low","alt":"Masajeador facial verde con cabezales dorados"},{"id":"ampolleta","name":"Ampolleta inteligente RGB","cat":"Hogar","price":9990,"img":"img/prod-ampolleta.jpg","state":"ok","alt":"Ampolleta LED iluminada con colores"},{"id":"lentes","name":"Lentes con IA y audio","cat":"Tendencias","price":79990,"img":"img/prod-lentes-ia.jpg","state":"pre","date":"15 oct","alt":"Lentes negros con cámara y parlantes integrados"},{"id":"bolsa","name":"Bolsa de agua plegable","cat":"Viajes","price":4990,"img":"img/prod-bolsa-agua.jpg","state":"ok","alt":"Bolsa de agua plegable azul con mosquetón"},{"id":"cuello","name":"Masajeador de cuello portátil","cat":"Bienestar","price":34900,"img":"img/cat-bienestar.jpg","state":"ok","alt":"Masajeador de cuello gris con calor"},{"id":"desayuno","name":"Desayunador 3 en 1","cat":"Hogar","price":54990,"img":"img/cat-hogar.jpg","state":"low","alt":"Desayunador con horno, plancha y cafetera"},{"id":"gato","name":"Saco de boxeo para gatos","cat":"Tendencias","price":8990,"img":"img/cat-tendencias.jpg","state":"off","alt":"Saco de boxeo negro para gatos con dos guantes colgantes y base de ventosa"},{"id":"linterna","name":"Linterna solar plegable","cat":"Outdoor","price":15600,"img":"img/cat-outdoor.jpg","state":"ok","alt":"Linterna solar plegable encendida"},{"id":"kitviaje","name":"Almohada de viaje y organizadores","cat":"Viajes","price":19990,"img":"img/cat-viajes.jpg","state":"ok","alt":"Almohada de viaje sobre tres organizadores de maleta"}];
+  var byId = {}; P.forEach(function(p){ byId[p.id] = p; });
   var clp = function(n){ return "$" + n.toLocaleString("es-CL"); };
-
-  function statusHTML(p){
-    if(p.state==="ok") return '<div class="status status-ok">Disponible</div>';
-    if(p.state==="low") return '<div class="status status-low"><span>Últimas unidades</span></div>';
-    if(p.state==="pre") return '<div class="status status-pre">Preventa, llega el ' + p.date + '</div>';
-    return '<div class="status status-off">Agotado <button class="notify" type="button" data-notify><svg class="icon-sm"><use href="#i-bell"/></svg>Avísame</button></div>';
-  }
-  function cardHTML(id){
-    var p = P[id], badge = "";
-    if(p.state==="pre") badge = '<span class="badge badge-pre">Preventa</span>';
-    else if(p.old) badge = '<span class="badge badge-sale">-' + Math.round((1 - p.price / p.old) * 100) + '%</span>';
-    var add = p.state==="off" ? "" : '<button class="add" type="button" data-add="' + id + '" aria-label="Agregar ' + p.name + ' al carrito"><svg class="icon"><use href="#i-plus"/></svg></button>';
-    return '<article class="card' + (p.state==="off" ? " is-off" : "") + '">' +
-      '<div class="card-top"><a class="card-media" href="tienda.html#p-' + id + '"><img src="' + p.img + '" alt="' + p.alt + '" loading="lazy">' + badge + '</a>' + add + '</div>' +
-      '<div class="card-body"><span class="card-cat">' + p.cat + '</span><a class="card-name" href="tienda.html#p-' + id + '">' + p.name + '</a>' +
-      '<div class="card-price"><strong class="price">' + clp(p.price) + '</strong>' + (p.old ? '<s class="price">' + clp(p.old) + '</s>' : '') + '</div>' +
-      statusHTML(p) + '</div></article>';
-  }
-  document.getElementById("featuredGrid").innerHTML = ["botella","facial","ampolleta","lentes"].map(cardHTML).join("");
-  var track = document.getElementById("track");
-  track.innerHTML = ["bolsa","cuello","desayuno","gato","linterna","kitviaje"].map(cardHTML).join("");
-
-  // Header: el logo se compacta al hacer scroll (IntersectionObserver, sin listener de scroll)
-  var header = document.getElementById("header");
-  new IntersectionObserver(function(e){ header.classList.toggle("is-compact", !e[0].isIntersecting); }).observe(document.getElementById("sentinel"));
-
-  // Slider del hero: cambia fondo, trazado y productos; el texto se mantiene
-  var hero = document.getElementById("hero"), slides = hero.querySelectorAll(".slide"), tabs = hero.querySelectorAll(".tab");
-  var cur = 0, timer = null, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function go(i){
-    cur = (i + slides.length) % slides.length;
-    slides.forEach(function(s, k){ s.classList.toggle("is-active", k === cur); });
-    tabs.forEach(function(t, k){ t.setAttribute("aria-selected", k === cur); });
-    hero.style.setProperty("--slide-bg", slides[cur].dataset.bg);
-    hero.dataset.tone = slides[cur].dataset.tone;
-  }
-  function play(){ if(reduce) return; stop(); timer = setInterval(function(){ go(cur + 1); }, 4000); }
-  function stop(){ if(timer){ clearInterval(timer); timer = null; } }
-  tabs.forEach(function(t, k){ t.addEventListener("click", function(){ go(k); play(); }); });
-  hero.addEventListener("mouseenter", stop); hero.addEventListener("mouseleave", play);
-  hero.addEventListener("focusin", stop); hero.addEventListener("focusout", play);
-  document.addEventListener("visibilitychange", function(){ document.hidden ? stop() : play(); });
-  play();
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var norm = function(s){ return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
 
   // Menú Tienda
   var drop = document.getElementById("drop"), dropBtn = document.getElementById("dropBtn"), dropPanel = document.getElementById("dropPanel");
@@ -781,13 +765,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   // Menú móvil
   var menuBtn = document.getElementById("menuBtn"), mnav = document.getElementById("mnav");
   menuBtn.addEventListener("click", function(){ var open = mnav.hidden; mnav.hidden = !open; menuBtn.setAttribute("aria-expanded", open); });
-  mnav.addEventListener("click", function(e){ if(e.target.closest("a")){ mnav.hidden = true; menuBtn.setAttribute("aria-expanded", false); } });
 
-  // Buscador con sugerencias: lleva a la ficha o a los resultados en la página Tienda
-  var TIENDA = "tienda.html";
-  var norm = function(s){ return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
-  var escH = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
-  var LIST = Object.keys(P).map(function(id){ var p = P[id]; return {id:id, name:p.name, cat:p.cat, price:p.price, img:p.img, hay:norm(p.name + " " + p.cat + " " + p.alt)}; });
+  // Buscador con sugerencias (lleva a la ficha o a los resultados en la Tienda)
   document.querySelectorAll('form[role="search"]').forEach(function(f){
     var input = f.querySelector("input");
     var box = document.createElement("div"); box.className = "suggest"; box.hidden = true; box.id = input.id + "-sug";
@@ -798,8 +777,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
       var q = input.value.trim(); clear.hidden = !q;
       if(q.length < 2){ box.hidden = true; return; }
       var words = norm(q).split(/\s+/);
-      var r = LIST.filter(function(p){ return words.every(function(w){ return p.hay.indexOf(w) > -1; }); });
-      box.innerHTML = (r.length ? r.slice(0, 4).map(function(p){ return '<a class="s-item" href="' + TIENDA + '#p-' + p.id + '"><img src="' + p.img + '" alt=""><span><strong>' + escH(p.name) + '</strong><small>' + p.cat + '</small></span><b class="price">' + clp(p.price) + '</b></a>'; }).join("") : '<p class="s-empty">Sin coincidencias en nombres para «' + escH(q) + '»</p>') +
+      var r = P.filter(function(p){ var hay = norm(p.name + " " + p.cat + " " + p.alt); return words.every(function(w){ return hay.indexOf(w) > -1; }); });
+      box.innerHTML = (r.length ? r.slice(0, 4).map(function(p){ return '<a class="s-item" href="' + TIENDA + '#p-' + p.id + '"><img src="' + p.img + '" alt=""><span><strong>' + esc(p.name) + '</strong><small>' + p.cat + '</small></span><b class="price">' + clp(p.price) + '</b></a>'; }).join("") : '<p class="s-empty">Sin coincidencias en nombres para «' + esc(q) + '»</p>') +
         '<a class="s-all" href="' + TIENDA + '#q-' + encodeURIComponent(q.replace(/\s+/g, "-")) + '">Ver todos los resultados en la tienda<svg class="icon-sm"><use href="#i-caret-right"/></svg></a>';
       box.hidden = false;
     }
@@ -813,43 +792,9 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
       if(e.key === "Escape"){ box.hidden = true; input.focus(); }
     });
     clear.addEventListener("click", function(){ input.value = ""; paint(); input.focus(); });
-    // Enter: lleva el foco al enlace de resultados (los enlaces a otra página se abren con clic o Enter sobre el enlace)
     f.addEventListener("submit", function(e){ e.preventDefault(); if(input.value.trim().length < 2) return; paint(); box.querySelector(".s-all").focus(); });
     document.addEventListener("click", function(e){ if(!f.contains(e.target)) box.hidden = true; });
   });
-
-  // Carrusel Recién llegados
-  var prev = document.getElementById("prev"), next = document.getElementById("next");
-  function step(){ var c = track.querySelector(".card"); return c ? c.offsetWidth + 20 : 300; }
-  prev.addEventListener("click", function(){ track.scrollBy({left:-step(), behavior:"smooth"}); });
-  next.addEventListener("click", function(){ track.scrollBy({left:step(), behavior:"smooth"}); });
-  var cards = track.querySelectorAll(".card");
-  var edge = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.target === cards[0]) prev.disabled = en.intersectionRatio > .95;
-      if(en.target === cards[cards.length - 1]) next.disabled = en.intersectionRatio > .95;
-    });
-  }, {root:track, threshold:[0,.95,1]});
-  edge.observe(cards[0]); edge.observe(cards[cards.length - 1]);
-
-  // Avísame
-  document.addEventListener("click", function(e){
-    var b = e.target.closest("[data-notify]");
-    if(b && !b.classList.contains("done")){ b.classList.add("done"); b.textContent = "Te avisaremos"; }
-  });
-
-  // Cuenta regresiva de la preventa
-  var target = new Date("2026-10-15T00:00:00-03:00").getTime();
-  var cd = {}; document.querySelectorAll("#countdown [data-u]").forEach(function(el){ cd[el.dataset.u] = el; });
-  function pad(n){ return String(n).padStart(2, "0"); }
-  function tick(){
-    var t = Math.max(0, target - Date.now());
-    cd.d.textContent = pad(Math.floor(t / 864e5));
-    cd.h.textContent = pad(Math.floor(t / 36e5) % 24);
-    cd.m.textContent = pad(Math.floor(t / 6e4) % 60);
-    cd.s.textContent = pad(Math.floor(t / 1e3) % 60);
-  }
-  tick(); setInterval(tick, 1000);
 
   // Carrito lateral
   var cart = [{id:"botella",q:1},{id:"ampolleta",q:1}];
@@ -859,21 +804,17 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   var lastFocus = null;
   function render(){
     var count = cart.reduce(function(s, l){ return s + l.q; }, 0);
-    var sub = cart.reduce(function(s, l){ return s + l.q * P[l.id].price; }, 0);
+    var sub = cart.reduce(function(s, l){ return s + l.q * byId[l.id].price; }, 0);
     countEl.textContent = count;
     document.getElementById("drawerTitle").textContent = count ? "Tu carrito (" + count + ")" : "Tu carrito";
-    subEl.textContent = clp(sub);
-    foot.hidden = !count;
-    if(!count){
-      itemsEl.innerHTML = '<div class="empty"><span class="ic"><svg class="icon"><use href="#i-handbag"/></svg></span><h3>Tu carrito está vacío</h3><p>Agrega productos desde Destacados o Recién llegados.</p><a class="btn btn-primary" href="#destacados" data-close>Ver destacados</a></div>';
-      return;
-    }
+    subEl.textContent = clp(sub); foot.hidden = !count;
+    if(!count){ itemsEl.innerHTML = '<div class="empty"><span class="ic"><svg class="icon"><use href="#i-handbag"/></svg></span><h3>Tu carrito está vacío</h3><p>Agrega productos desde el catálogo.</p><a class="btn btn-primary" href="' + TIENDA + '">Ver el catálogo</a></div>'; return; }
     itemsEl.innerHTML = cart.map(function(l){
-      var p = P[l.id];
+      var p = byId[l.id];
       return '<div class="line"><img src="' + p.img + '" alt="">' +
-        '<div><div class="line-name">' + p.name + '</div><div class="line-cat">' + (p.state==="pre" ? "Preventa, llega el " + p.date : p.cat) + '</div>' +
+        '<div><div class="line-name">' + esc(p.name) + '</div><div class="line-cat">' + (p.state === "pre" ? "Preventa, llega el " + p.date : p.cat) + '</div>' +
         '<div class="qty"><button type="button" data-dec="' + l.id + '" aria-label="Quitar uno"><svg class="icon-sm"><use href="#i-minus"/></svg></button><span>' + l.q + '</span><button type="button" data-inc="' + l.id + '" aria-label="Agregar uno"><svg class="icon-sm"><use href="#i-plus"/></svg></button></div></div>' +
-        '<div class="line-right"><strong>' + clp(p.price * l.q) + '</strong><button class="remove" type="button" data-rm="' + l.id + '" aria-label="Eliminar ' + p.name + '"><svg class="icon"><use href="#i-trash"/></svg></button></div></div>';
+        '<div class="line-right"><strong>' + clp(p.price * l.q) + '</strong><button class="remove" type="button" data-rm="' + l.id + '" aria-label="Eliminar ' + esc(p.name) + '"><svg class="icon"><use href="#i-trash"/></svg></button></div></div>';
     }).join("");
   }
   function openCart(){ lastFocus = document.activeElement; drawer.classList.add("show"); scrim.classList.add("show"); drawer.setAttribute("aria-hidden","false"); drawer.inert = false; document.getElementById("closeCart").focus(); }
@@ -884,14 +825,56 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   scrim.addEventListener("click", closeCart);
   document.addEventListener("keydown", function(e){ if(e.key === "Escape"){ closeCart(); setDrop(false); } });
   document.addEventListener("click", function(e){
-    var a = e.target.closest("[data-add]");
-    if(a){ var id = a.dataset.add, l = cart.find(function(x){ return x.id === id; }); if(l) l.q++; else cart.push({id:id,q:1}); render(); openCart(); return; }
     var inc = e.target.closest("[data-inc]"), dec = e.target.closest("[data-dec]"), rm = e.target.closest("[data-rm]");
     if(inc){ cart.find(function(x){ return x.id === inc.dataset.inc; }).q++; render(); }
     if(dec){ var d = cart.find(function(x){ return x.id === dec.dataset.dec; }); d.q--; if(d.q < 1) cart = cart.filter(function(x){ return x !== d; }); render(); }
     if(rm){ cart = cart.filter(function(x){ return x.id !== rm.dataset.rm; }); render(); }
-    if(e.target.closest("[data-close]")) closeCart();
   });
+
+  // Horario en hora de Chile: indicador "abierto ahora" y día resaltado
+  (function(){
+    var parts = new Intl.DateTimeFormat("es-CL", {timeZone:"America/Santiago", weekday:"short", hour:"2-digit", minute:"2-digit", hour12:false}).formatToParts(new Date());
+    var map = {}; parts.forEach(function(p){ map[p.type] = p.value; });
+    var wd = ["dom","lun","mar","mié","jue","vie","sáb"].indexOf(String(map.weekday).replace(".","").toLowerCase());
+    var mins = (+map.hour % 24) * 60 + (+map.minute);
+    var open = (wd >= 1 && wd <= 5 && mins >= 540 && mins < 1080) || (wd === 6 && mins >= 600 && mins < 840);
+    var row = wd === 0 ? 0 : (wd === 6 ? 6 : 1);
+    document.querySelectorAll("#days li").forEach(function(li){ if(+li.dataset.d === row){ li.classList.add("today"); li.firstElementChild.textContent += " · hoy"; } });
+    var live = document.getElementById("live");
+    live.className = "live " + (open ? "is-open" : "is-closed");
+    document.getElementById("liveText").textContent = open ? "Atendiendo ahora" : "Fuera de horario, respondemos el siguiente día hábil";
+  })();
+
+  // Copiar correo
+  document.getElementById("copyMail").addEventListener("click", function(){
+    var mail = document.getElementById("mail").textContent, t = document.getElementById("toast");
+    var done = function(){ t.textContent = "Correo copiado"; setTimeout(function(){ t.textContent = ""; }, 2200); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(mail).then(done, function(){ selectMail(); }); } else selectMail();
+    function selectMail(){ var r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); t.textContent = "Selecciona y copia el correo"; }
+  });
+
+  // Formulario con validación y estado de envío (maqueta: no envía datos)
+  var cf = document.getElementById("contactForm"), msg = document.getElementById("cMsg"), cnt = document.getElementById("cCount");
+  msg.addEventListener("input", function(){ cnt.textContent = msg.value.length + " / 600"; });
+  function setErr(f, text){ var el = cf.querySelector('[data-f="' + f + '"]'), e = el.querySelector(".err"); el.classList.toggle("has-error", !!text); e.hidden = !text; e.innerHTML = text ? '<svg class="icon-sm"><use href="#i-warning-circle"/></svg>' + text : ""; }
+  function check(){
+    var ok = true, v = function(id){ return document.getElementById(id).value.trim(); };
+    if(v("cName").length < 2){ setErr("name", "Escribe tu nombre."); ok = false; } else setErr("name", "");
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("cEmail"))){ setErr("email", "Revisa el correo, por ejemplo nombre@correo.cl."); ok = false; } else setErr("email", "");
+    var ph = v("cPhone").replace(/[\s-]/g, "");
+    if(ph && !/^\+?\d{8,12}$/.test(ph)){ setErr("phone", "Escribe el número con código, por ejemplo +56 9 1234 5678."); ok = false; } else setErr("phone", "");
+    if(v("cMsg").length < 10){ setErr("msg", "Cuéntanos un poco más (al menos 10 caracteres)."); ok = false; } else setErr("msg", "");
+    return ok;
+  }
+  cf.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!check()){ var first = cf.querySelector(".has-error input, .has-error textarea"); if(first) first.focus(); return; }
+    var name = document.getElementById("cName").value.trim().split(" ")[0];
+    document.getElementById("sentText").textContent = "Gracias, " + name + ". Te contestamos dentro de un día hábil" + (document.getElementById("cPhone").value.trim() ? ", por correo o WhatsApp." : " a tu correo.");
+    cf.hidden = true; document.getElementById("sent").hidden = false; document.getElementById("formTitle").textContent = "Listo";
+  });
+  cf.addEventListener("input", function(e){ var f = e.target.closest(".field"); if(f && f.classList.contains("has-error")) check(); });
+  document.getElementById("again").addEventListener("click", function(){ cf.reset(); cnt.textContent = "0 / 600"; cf.hidden = false; document.getElementById("sent").hidden = true; document.getElementById("formTitle").textContent = "Envíanos un mensaje"; document.getElementById("cName").focus(); });
   render();
 })();
 </script>
