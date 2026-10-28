@@ -25,6 +25,7 @@
   --surface:#C4FEE0;
   --surface-soft:#F0FFF7;
   --img-bg:#F2FBF6;
+  --img-grad:radial-gradient(130% 110% at 28% 20%,#EEF5F1 0%,#E3EBE6 45%,#D6DFDA 100%);
   --cat-bg:#C4FEE0;
   --cat-fg:#0A2B63;
   --lime:#A5F500;
@@ -54,7 +55,7 @@
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --bg:#07162F;--ink:#9CC7FF;--ink-strong:#E8F1FF;--muted:#A9BDDA;--line:#1D3761;
-    --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--cat-bg:#BDEFD5;--cat-fg:#07162F;
+    --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--img-grad:radial-gradient(130% 110% at 28% 20%,#E6EFEA 0%,#DCE5E0 45%,#CED8D3 100%);--cat-bg:#BDEFD5;--cat-fg:#07162F;
     --btn-bg:#C4FEE0;--btn-fg:#07162F;--btn-bg-hover:#A8F2CB;--band-bg:#0B2A5E;--band-fg:#FFFFFF;
     --ok:#6FE3A8;--low-bg:#4A2314;--low-fg:#FFB896;--off-fg:#8A9BB5;--scrim:rgba(0,0,0,.6);
     --shadow:0 12px 32px rgba(0,0,0,.35);--img-blend:normal;
@@ -63,7 +64,7 @@
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#07162F;--ink:#9CC7FF;--ink-strong:#E8F1FF;--muted:#A9BDDA;--line:#1D3761;
-  --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--cat-bg:#BDEFD5;--cat-fg:#07162F;
+  --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--img-grad:radial-gradient(130% 110% at 28% 20%,#E6EFEA 0%,#DCE5E0 45%,#CED8D3 100%);--cat-bg:#BDEFD5;--cat-fg:#07162F;
   --btn-bg:#C4FEE0;--btn-fg:#07162F;--btn-bg-hover:#A8F2CB;--band-bg:#0B2A5E;--band-fg:#FFFFFF;
   --ok:#6FE3A8;--low-bg:#4A2314;--low-fg:#FFB896;--off-fg:#8A9BB5;--scrim:rgba(0,0,0,.6);
   --shadow:0 12px 32px rgba(0,0,0,.35);--img-blend:normal;
@@ -221,8 +222,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--bg);transition:box-shadow .3s,transform .3s cubic-bezier(.16,1,.3,1)}
 .card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
 .card-top{position:relative}
-.card-media{position:relative;display:block;background:var(--img-bg);aspect-ratio:1}
-.card-media img{width:100%;height:100%;object-fit:cover;mix-blend-mode:var(--img-blend);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.card-media{position:relative;display:block;background:var(--img-grad);aspect-ratio:1}
+.card-media img{width:100%;height:100%;object-fit:contain;padding:8.2%;box-sizing:border-box;mix-blend-mode:var(--img-blend);filter:drop-shadow(0 14px 14px rgba(10,43,99,.14));transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .card:hover .card-media img{transform:scale(1.04)}
 .badge{position:absolute;left:12px;top:12px;height:28px;padding-inline:12px;border-radius:999px;font-size:13px;font-weight:700;display:inline-flex;align-items:center}
 .badge-sale{background:var(--orange);color:#0A2B63}
@@ -234,7 +235,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .card-body,.line,.reel-info,.pre-copy p,.tile p,.drop-panel span,.countdown{font-family:var(--font-text)}
 .card-body{display:grid;gap:4px;padding:14px 16px 16px}
 .card-cat{font-size:13px;color:var(--muted)}
-.card-name{font-size:17px;font-weight:500;color:var(--ink-strong);line-height:1.25}
+.card-name{font-size:17px;font-weight:500;color:var(--ink-strong);line-height:1.25;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card-name:hover{color:var(--ink)}
 .card-price{display:flex;align-items:baseline;gap:8px;margin-top:4px}
 .card-price strong{font-size:20px;color:var(--ink);font-weight:700}
@@ -285,6 +286,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .pre{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-card);overflow:hidden;background:var(--lime);color:#0A2B63}
 .pre-media{position:relative;min-height:420px}
 .pre-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pre-media.is-cutout{background:radial-gradient(circle at 50% 42%,#2F74D6 0,#004AAD 58%,#003A8C 100%)}
+.pre-media.is-cutout img{object-fit:contain;padding:clamp(24px,4vw,48px);filter:drop-shadow(0 26px 26px rgba(0,20,60,.35))}
 .pre-copy{padding:clamp(28px,4.5vw,64px);display:grid;align-content:center;gap:16px}
 .pre-copy .badge-pre{position:static;justify-self:start;height:32px;padding-inline:14px;font-size:14px}
 .pre-copy h2{color:#0A2B63;font-size:clamp(32px,3.125vw,45px)}
@@ -305,7 +308,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .trust span{font-size:14px;color:rgba(255,255,255,.8)}
 
 /* Míralo en uso */
-.social{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.social{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .reel{display:grid;gap:12px}
 .reel-media{position:relative;display:block;aspect-ratio:9/16;border-radius:var(--r-card);overflow:hidden;background:var(--surface-soft)}
 .reel-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
@@ -363,7 +366,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .drawer-items{flex:1;overflow-y:auto;padding:8px 20px;display:grid;align-content:start}
 .line{display:grid;grid-template-columns:80px 1fr auto;gap:14px;padding-block:16px;border-bottom:1px solid var(--line)}
 .line:last-child{border-bottom:0}
-.line img{width:80px;height:80px;border-radius:12px;object-fit:cover}
+.line img{width:80px;height:80px;border-radius:12px;object-fit:contain;background:var(--img-grad)}
 .line-name{font-weight:500;line-height:1.25}
 .line-cat{font-size:13px;color:var(--muted)}
 .qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;margin-top:8px}
@@ -406,7 +409,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   .grid-4{grid-template-columns:repeat(2,1fr);gap:14px}
   .track{grid-auto-columns:calc((100% - 14px) / 2);gap:14px}
   .trust ul{grid-template-columns:repeat(2,1fr)}
-  .social{grid-template-columns:repeat(2,1fr);gap:14px}
+  .social{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:46%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .footer-grid{grid-template-columns:repeat(3,1fr)}
   .footer-brand,.footer-pay{grid-column:1 / -1}
   .footer-pay{grid-template-columns:auto auto;justify-content:start;align-items:center}
@@ -452,7 +455,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .suggest{position:absolute;right:0;top:calc(100% + 8px);z-index:45;width:380px;max-width:calc(100vw - 32px);background:var(--bg);border:1px solid var(--line);border-radius:var(--r-card);box-shadow:var(--shadow);padding:8px;display:grid;gap:2px;font-family:var(--font-text)}
 .s-item{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:8px;border-radius:12px}
 .s-item:hover,.s-item:focus-visible{background:var(--surface-soft);outline:none}
-.s-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--img-bg)}
+.s-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--img-grad)}
 .s-item strong{display:block;font-size:14px;font-weight:500;color:var(--ink-strong);line-height:1.3}
 .s-item small{font-size:12px;color:var(--muted)}
 .s-item b{font-size:14px;color:var(--ink)}
@@ -602,7 +605,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .suggest{position:absolute;right:0;top:calc(100% + 8px);z-index:45;width:380px;max-width:calc(100vw - 32px);background:var(--bg);border:1px solid var(--line);border-radius:var(--r-card);box-shadow:var(--shadow);padding:8px;display:grid;gap:2px;font-family:var(--font-text)}
 .s-item{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:8px;border-radius:12px}
 .s-item:hover,.s-item:focus-visible{background:var(--surface-soft);outline:none}
-.s-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--img-bg)}
+.s-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--img-grad)}
 .s-item strong{display:block;font-size:14px;font-weight:500;color:var(--ink-strong);line-height:1.3}
 .s-item small{font-size:12px;color:var(--muted)}
 .s-item b{font-size:14px;color:var(--ink)}
@@ -624,12 +627,12 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .pdp-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start;padding-top:16px}
 .gallery{display:grid;grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:start}
 .thumbs{display:grid;gap:10px}
-.thumb{width:84px;height:84px;border-radius:12px;overflow:hidden;border:1.5px solid var(--line);background:var(--img-bg);padding:0;transition:border-color .2s}
+.thumb{width:84px;height:84px;border-radius:12px;overflow:hidden;border:1.5px solid var(--line);background:var(--img-grad);padding:0;transition:border-color .2s}
 .thumb img{width:100%;height:100%;object-fit:cover}
 .thumb:hover{border-color:var(--muted)}
 .thumb[aria-current="true"]{border:2px solid var(--btn-bg)}
-.main-img{position:relative;aspect-ratio:1;border-radius:var(--r-card);overflow:hidden;background:var(--img-bg)}
-.main-img img{width:100%;height:100%;object-fit:cover}
+.main-img{position:relative;aspect-ratio:1;border-radius:var(--r-card);overflow:hidden;background:var(--img-grad)}
+.main-img img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 18px 18px rgba(10,43,99,.14))}
 .buy{position:sticky;top:calc(var(--header-h) + 24px);display:grid;gap:14px;padding-top:12px}
 .buy-cat{justify-self:start;font-family:var(--font-text);font-size:14px;font-weight:500;color:var(--ink);background:var(--surface);padding:4px 12px;border-radius:999px}
 .buy-cat:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
@@ -720,6 +723,15 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .pdp-fav{justify-self:start;display:inline-flex;align-items:center;gap:8px;height:36px;padding-inline:14px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink-strong);font-weight:500;font-size:14px}
 .pdp-fav:hover{border-color:var(--ink)}
 .pdp-fav[aria-pressed="true"]{color:#E2552C;border-color:#F3B49B;background:#FFF4EF}
+/* Catálogo real: textos con viñetas, filas de especificación completas, notas */
+.tabpanel ul,.tabpanel ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.tabpanel li::marker{color:var(--ink)}
+.tabpanel strong{color:var(--ink-strong)}
+.spec-intro{margin-bottom:6px;color:var(--ink-strong)}
+.specs .full{grid-template-columns:1fr}
+.specs .full dd{font-weight:400}
+.var-note{margin-top:8px;font-size:13px;color:var(--muted)}
+.card-price small{font-size:12px;color:var(--muted);margin-right:4px}
 
 </style>
 
@@ -771,11 +783,11 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
       <div class="nav-drop" id="drop">
         <a href="#catalogo" aria-current="page">Tienda</a><button type="button" id="dropBtn" aria-expanded="false" aria-controls="dropPanel" aria-label="Ver categorías de la tienda"><svg class="icon-sm"><use href="#i-caret-down"/></svg></button>
         <div class="drop-panel" id="dropPanel" hidden>
-          <a href="tienda.html#viajes"><img src="img/cat-viajes.png" alt=""><div><strong>Viajes</strong><span>12 productos</span></div></a>
-          <a href="tienda.html#outdoor"><img src="img/cat-outdoor.png" alt=""><div><strong>Outdoor</strong><span>9 productos</span></div></a>
-          <a href="tienda.html#hogar"><img src="img/cat-hogar.png" alt=""><div><strong>Hogar</strong><span>14 productos</span></div></a>
-          <a href="tienda.html#bienestar"><img src="img/cat-bienestar.png" alt=""><div><strong>Bienestar</strong><span>7 productos</span></div></a>
-          <a href="tienda.html#tendencias"><img src="img/cat-tendencias.png" alt=""><div><strong>Tendencias</strong><span>8 productos</span></div></a>
+          <a href="tienda.html#viajes"><img src="img/cat-viajes.png" alt=""><div><strong>Viajes</strong><span>1 producto</span></div></a>
+          <a href="tienda.html#outdoor"><img src="img/cat-outdoor.png" alt=""><div><strong>Outdoor</strong><span>4 productos</span></div></a>
+          <a href="tienda.html#hogar"><img src="img/cat-hogar.png" alt=""><div><strong>Hogar</strong><span>2 productos</span></div></a>
+          <a href="tienda.html#bienestar"><img src="img/cat-bienestar.png" alt=""><div><strong>Bienestar</strong><span>1 producto</span></div></a>
+          <a href="tienda.html#tendencias"><img src="img/cat-tendencias.png" alt=""><div><strong>Tendencias</strong><span>4 productos</span></div></a>
           <a class="drop-all" href="tienda.html">Ver todo el catálogo</a>
         </div>
       </div>
@@ -851,10 +863,6 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
             <label for="pMax">Hasta<input id="pMax" type="number" inputmode="numeric" min="0" step="100"></label>
           </div>
         </fieldset>
-        <fieldset class="f-group" data-group="size">
-          <legend class="f-legend">Tamaño <small data-sel="size">0 seleccionadas</small></legend>
-          <div id="optSize"></div>
-        </fieldset>
         <fieldset class="f-group" data-group="avail">
           <legend class="f-legend">Disponibilidad <small data-sel="avail">0 seleccionadas</small></legend>
           <div id="optAvail"></div>
@@ -873,8 +881,6 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
             <button class="sort-btn" type="button" id="sortBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="sortList">Ordenar: <b id="sortLabel">Más relevantes</b><svg class="icon-sm"><use href="#i-caret-down"/></svg></button>
             <ul class="sort-list" id="sortList" role="listbox" aria-label="Ordenar productos" hidden>
               <li role="option" tabindex="-1" data-sort="rel" aria-selected="true">Más relevantes<svg class="icon-sm"><use href="#i-check"/></svg></li>
-              <li role="option" tabindex="-1" data-sort="sales" aria-selected="false">Más vendidos<svg class="icon-sm"><use href="#i-check"/></svg></li>
-              <li role="option" tabindex="-1" data-sort="new" aria-selected="false">Novedad<svg class="icon-sm"><use href="#i-check"/></svg></li>
               <li role="option" tabindex="-1" data-sort="asc" aria-selected="false">Precio: menor a mayor<svg class="icon-sm"><use href="#i-check"/></svg></li>
               <li role="option" tabindex="-1" data-sort="desc" aria-selected="false">Precio: mayor a menor<svg class="icon-sm"><use href="#i-check"/></svg></li>
             </ul>
@@ -957,10 +963,10 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 
 <script>
 (function(){
-  // Catálogo de ejemplo (mismos productos e imágenes del Inicio; marcas, stock, textos y especificaciones son de referencia)
-  var P = [{"id":"botella","name":"Botella plegable Fútbol","brand":"NOVO","cat":"Outdoor","size":"Compacto","price":12990,"state":"ok","stock":14,"sales":182,"added":9,"img":"img/prod-botella-futbol.jpg","alt":"Botella de agua plegable con diseño de balón de fútbol","gallery":[["img/prod-botella-futbol.jpg","center"],["img/social-botella.jpg","center 40%"],["img/hero-scene-outdoor.jpg","68% center"]],"desc":"Botella de silicona que se pliega a la mitad cuando está vacía. Con mosquetón para colgarla de la mochila.","long":["La botella plegable Fútbol tiene cuerpo de silicona alimentaria que se comprime como acordeón: llena guarda 550 ml y vacía ocupa la mitad del espacio en la mochila.","Las tapas con diseño de balón son de plástico libre de BPA, la tapa superior cierra con rosca y el mosquetón permite colgarla de la mochila o del cinturón.","Se lava a mano o en la parte superior del lavavajillas. No es apta para bebidas sobre 60 °C."],"specs":[["Capacidad","550 ml"],["Material","Silicona alimentaria y plástico libre de BPA"],["Medidas abierta","22 × 8 cm"],["Medidas plegada","11 × 8 cm"],["Peso","160 g"],["Tapa","Rosca hermética"],["Accesorio","Mosquetón metálico"],["Temperatura máxima","60 °C"],["Limpieza","A mano o lavavajillas"],["Garantía","3 meses"]]},{"id":"facial","name":"Masajeador facial 3 en 1","brand":"VERA","cat":"Bienestar","size":"Compacto","price":24990,"old":29990,"state":"low","stock":3,"sales":143,"added":6,"img":"img/prod-masajeador-facial.jpg","alt":"Masajeador facial verde con cabezales dorados","gallery":[["img/prod-masajeador-facial.jpg","center"],["img/social-facial.jpg","center 35%"],["img/hero-scene-bienestar.jpg","78% center"]],"opts":{"label":"Color","items":[["Verde",24990],["Rosa",24990],["Blanco",26990]]},"desc":"Masajeador con vibración, calor suave y tres cabezales intercambiables para rostro y cuello.","long":["El masajeador facial 3 en 1 combina vibración sónica y calor suave para relajar la musculatura del rostro y ayudar a que cremas y sérums se absorban mejor.","Incluye tres cabezales con baño dorado: forma de T para pómulos y mandíbula, placa tipo gua sha para el cuello y copa pequeña para el contorno de ojos.","Se carga por USB-C y una carga completa alcanza para unas dos semanas de uso diario de cinco minutos."],"specs":[["Modos","Vibración y calor"],["Temperatura","42 °C"],["Cabezales","3 intercambiables"],["Material cabezales","Aleación con baño dorado"],["Batería","500 mAh recargable"],["Carga","USB-C, 2 horas"],["Autonomía","14 sesiones de 5 minutos"],["Resistencia al agua","IPX6"],["Peso","120 g"],["Garantía","6 meses"]]},{"id":"ampolleta","name":"Ampolleta inteligente RGB","brand":"SUMA","cat":"Hogar","size":"Compacto","price":9990,"state":"ok","stock":26,"sales":216,"added":4,"img":"img/prod-ampolleta.jpg","alt":"Ampolleta LED iluminada con colores","gallery":[["img/prod-ampolleta.jpg","center"],["img/hero-scene-hogar.jpg","72% 30%"]],"desc":"Ampolleta LED de 16 millones de colores que se controla desde el celular o por voz.","long":["Se enrosca en cualquier portalámparas E27 y se conecta a tu red Wi-Fi de 2,4 GHz. Desde la app eliges color, intensidad y temperatura del blanco, de cálido a frío.","Programa horarios para que se encienda sola al llegar a casa o se apague de a poco a la hora de dormir. Funciona con Google Assistant y Alexa.","Consume 9 W y entrega una luz equivalente a una ampolleta tradicional de 60 W."],"specs":[["Potencia","9 W"],["Equivalencia","60 W tradicional"],["Flujo luminoso","806 lm"],["Rosca","E27"],["Colores","RGB y blanco 2700 a 6500 K"],["Conexión","Wi-Fi 2,4 GHz"],["Asistentes","Google Assistant y Alexa"],["Vida útil","25.000 horas"],["Voltaje","220 V"],["Garantía","12 meses"]]},{"id":"lentes","name":"Lentes con IA y audio","brand":"ALTO","cat":"Tendencias","size":"Compacto","price":79990,"state":"pre","date":"15 oct","stock":20,"sales":37,"added":10,"img":"img/prod-lentes-ia.jpg","alt":"Lentes negros con cámara y parlantes integrados","gallery":[["img/prod-lentes-ia.jpg","center"],["img/banner-preventa-lentes.jpg","center"],["img/hero-scene-tendencias.jpg","78% center"]],"desc":"Lentes con parlantes abiertos, micrófonos y cámara para escuchar música, llamar y preguntar sin sacar el celular.","long":["Los parlantes direccionales quedan sobre el oído sin taparlo, así escuchas música o llamadas y sigues oyendo lo que pasa a tu alrededor.","Con el asistente de voz puedes hacer preguntas, traducir frases o pedir indicaciones. La cámara de la bisagra toma fotos con un toque en la patilla.","Los cristales tienen filtro UV400 y se cargan dentro de su estuche, que también los protege."],"specs":[["Audio","Parlantes abiertos direccionales"],["Micrófonos","4, con reducción de ruido"],["Cámara","12 MP"],["Conexión","Bluetooth 5.3"],["Autonomía","6 horas de música"],["Carga","Estuche con USB-C"],["Cristales","Filtro UV400"],["Resistencia","IPX4"],["Peso","49 g"],["Garantía","12 meses"]]},{"id":"bolsa","name":"Bolsa de agua plegable","brand":"KIVA","cat":"Viajes","size":"Compacto","price":4990,"state":"ok","stock":40,"sales":98,"added":3,"img":"img/prod-bolsa-agua.jpg","alt":"Bolsa de agua plegable azul con mosquetón","gallery":[["img/prod-bolsa-agua.jpg","center"],["img/mosaico-viajes.jpg","center"],["img/hero-scene-viajes.jpg","82% center"]],"desc":"Bolsa de agua flexible que se enrolla cuando está vacía. Para viajes, trekking y gimnasio.","long":["Guarda 700 ml y, vacía, se enrolla hasta caber en un bolsillo. Su base se abre para que quede de pie cuando está llena.","Es de plástico libre de BPA, con tapa deportiva y mosquetón de aluminio para colgarla de la mochila.","Se puede congelar para tener agua fría por más tiempo."],"specs":[["Capacidad","700 ml"],["Material","Plástico libre de BPA"],["Medidas llena","26 × 13 cm"],["Medidas enrollada","13 × 4 cm"],["Peso","35 g"],["Tapa","Deportiva con válvula"],["Accesorio","Mosquetón de aluminio"],["Apta para congelador","Sí"],["Limpieza","A mano"],["Garantía","3 meses"]]},{"id":"cuello","name":"Masajeador de cuello portátil","brand":"VERA","cat":"Bienestar","size":"Mediano","price":34900,"state":"ok","stock":11,"sales":121,"added":7,"img":"img/cat-bienestar.jpg","alt":"Masajeador de cuello gris con calor","gallery":[["img/cat-bienestar.jpg","center"],["img/social-cuello.jpg","center 35%"],["img/hero-scene-bienestar.jpg","62% center"]],"desc":"Masajeador en U con pulsos y calor para aliviar la tensión del cuello en 15 minutos.","long":["Se apoya sobre los hombros y trabaja con pulsos de baja frecuencia y calor a 42 °C sobre la nuca, la zona donde más se acumula la tensión del día.","Tiene seis modos y quince niveles de intensidad que se cambian con los botones laterales. Se apaga solo a los 15 minutos.","Es liviano y se dobla para guardarlo en su estuche, así lo puedes usar en la oficina, en el auto o en un viaje."],"specs":[["Modos","6"],["Niveles de intensidad","15"],["Temperatura","42 °C"],["Sesión","15 minutos con apagado automático"],["Batería","1200 mAh"],["Carga","USB-C, 2,5 horas"],["Autonomía","8 sesiones"],["Material","ABS y silicona"],["Peso","180 g"],["Garantía","6 meses"]]},{"id":"desayuno","name":"Desayunador 3 en 1","brand":"SUMA","cat":"Hogar","size":"Grande","price":54990,"state":"low","stock":4,"sales":64,"added":8,"img":"img/cat-hogar.jpg","alt":"Desayunador con horno, plancha y cafetera","gallery":[["img/cat-hogar.jpg","center"],["img/mosaico-hogar.jpg","center"],["img/hero-scene-hogar.jpg","70% 70%"]],"desc":"Horno, plancha y cafetera en un solo equipo para preparar el desayuno completo en el mesón.","long":["El desayunador 3 en 1 junta un horno de 9 litros para tostadas y gratinados, una plancha antiadherente para huevos o panqueques y una cafetera de goteo de cuatro tazas.","Las tres funciones se usan al mismo tiempo y cada una tiene su propio control, con temporizador de 60 minutos para el horno.","Ocupa el espacio de una tostadora grande y la bandeja de migas se retira para limpiarla."],"specs":[["Horno","9 litros, hasta 230 °C"],["Plancha","Antiadherente, 18 × 18 cm"],["Cafetera","4 tazas, filtro permanente"],["Temporizador","60 minutos"],["Potencia total","1.250 W"],["Voltaje","220 V"],["Medidas","45 × 28 × 30 cm"],["Peso","5,2 kg"],["Accesorios","Bandeja, rejilla y jarra de vidrio"],["Garantía","12 meses"]]},{"id":"gato","name":"Saco de boxeo para gatos","brand":"NOVO","cat":"Tendencias","size":"Mediano","price":8990,"state":"off","stock":0,"sales":155,"added":5,"img":"img/cat-tendencias.jpg","alt":"Saco de boxeo negro para gatos con dos guantes colgantes y base de ventosa","gallery":[["img/cat-tendencias.jpg","center"],["img/social-gato.jpg","center 45%"]],"desc":"Saco con guantes colgantes y base de ventosa que rebota con cada golpe para que tu gato juegue solo.","long":["El saco se fija al piso o a una ventana con su ventosa y el tallo flexible lo hace rebotar con cada golpe, así el juego no termina en el primer zarpazo.","Los dos guantes cuelgan de cordones elásticos y se mueven con el saco, lo que despierta el instinto de caza y ayuda a que el gato gaste energía.","La cubierta es de cuero sintético resistente a los rasguños y se limpia con un paño húmedo."],"specs":[["Altura","38 cm"],["Base","Ventosa con traba"],["Tallo","Flexible con resorte interno"],["Cubierta","Cuero sintético"],["Guantes","2, con cordón elástico"],["Relleno","Fibra"],["Superficies","Piso liso, vidrio o cerámica"],["Edad recomendada","Desde 3 meses"],["Limpieza","Paño húmedo"],["Garantía","3 meses"]]},{"id":"linterna","name":"Linterna solar plegable","brand":"ALTO","cat":"Outdoor","size":"Mediano","price":15600,"old":19500,"state":"ok","stock":9,"sales":77,"added":2,"img":"img/cat-outdoor.jpg","alt":"Linterna solar plegable encendida","gallery":[["img/cat-outdoor.jpg","center"],["img/banner-outdoor.jpg","62% center"],["img/hero-scene-outdoor.jpg","56% center"]],"desc":"Linterna que se pliega como acordeón y se carga con el sol o por USB.","long":["Abierta ilumina una carpa o una mesa completa; plegada mide lo mismo que un plato y cabe en cualquier bolso.","El panel solar de la tapa la carga durante el día y también tiene entrada USB-C para cargarla antes de salir. Puede cargar tu celular en una emergencia.","Tiene tres niveles de luz y es resistente a la lluvia, así que la puedes dejar colgada afuera."],"specs":[["Niveles de luz","3"],["Intensidad máxima","300 lm"],["Carga","Panel solar y USB-C"],["Batería","2000 mAh"],["Autonomía","Hasta 24 horas en nivel bajo"],["Salida","USB para cargar el celular"],["Resistencia","IPX5"],["Medidas plegada","13 × 5 cm"],["Peso","210 g"],["Garantía","6 meses"]]},{"id":"kitviaje","name":"Almohada de viaje y organizadores","brand":"KIVA","cat":"Viajes","size":"Grande","price":19990,"old":24990,"state":"ok","stock":12,"sales":110,"added":1,"img":"img/cat-viajes.jpg","alt":"Almohada de viaje sobre tres organizadores de maleta","gallery":[["img/cat-viajes.jpg","center"],["img/mosaico-viajes.jpg","center"],["img/hero-scene-viajes.jpg","78% center"]],"opts":{"label":"Color","items":[["Azul",19990],["Menta",19990],["Gris",21990]]},"desc":"Almohada cervical inflable y tres organizadores de maleta con cierre para viajar ordenado.","long":["El set trae tres organizadores de distinto tamaño para separar ropa, calzado y accesorios, así no tienes que deshacer la maleta completa para encontrar algo.","Los organizadores son de poliéster resistente al agua, con malla en la cara superior para ventilar la ropa y ver el contenido sin abrir. La almohada cervical se infla en segundos y se guarda en su propia bolsa.","Todo se lava a mano con agua tibia y se seca al aire."],"specs":[["Contenido","Almohada inflable y 3 organizadores"],["Organizador grande","40 × 30 × 10 cm"],["Organizador mediano","30 × 25 × 10 cm"],["Organizador chico","25 × 18 × 10 cm"],["Material organizadores","Poliéster resistente al agua"],["Ventilación","Malla en la cara superior"],["Almohada","Inflable con funda de terciopelo"],["Peso total","420 g"],["Limpieza","A mano, secado al aire"],["Garantía","3 meses"]]}];
+  // Catálogo real (fichas PDF de la clienta); textos y precios literales, todos disponibles por ahora
+  var P = [{"id":"botella","name":"Botella de agua plegable fútbol","cat":"Outdoor","price":5187,"state":"ok","img":"img/p/botella-futbol-1.webp","alt":"Dos botellas plegables con diseño de balón de fútbol, una plegada y otra extendida","gallery":[["img/p/botella-futbol-1.webp","center"],["img/p/botella-futbol-2.webp","center"]],"desc":"La botella de agua plegable con diseño de balón de fútbol es un accesorio portátil, liviano y divertido de 500 ml a 550 ml, ideal para deportes y uso diario","long":["Entre sus Características Principales están:","• Diseño creativo: Simula un balón de fútbol cuando está contraído o expandido, ideal para niños y amantes del deporte.","• Función plegable: Se puede doblar o reducir su tamaño a la mitad cuando está vacía, ahorrando espacio en la mochila.","• Material seguro: Fabricada de silicona de grado alimenticio, flexible y libre de BPA.","• Antifugas: Cuenta con tapa hermética de rosca y boquilla rebatible para evitar derrames.","• Uso práctico: Perfecta para llevar a la escuela, entrenamientos en la cancha, gimnasio o paseos al aire libre."],"specs":[["Marca","Mohits"],["Modelo","Botella plegable"],["Color","Blanco y Negro"],["Capacidad","550 ml"],["Altura","18 cm."],["Ancho","8.7 cm"],["Diámetro","8.7 cm"],["Peso","200 grs."],["Material","ABS silicona"],["Tipo de boquilla","rebatible."],["Incluye mosquetón."],["2 horas de conservación de bebida fría."],["Posee correa desmontable, manija y sorbete."],["Incluye superficie antideslizante y sistema antigoteo."],["Hermético."],["No apto para bebidas calientes."]]},{"id":"mesa","name":"Mesa cooler 28 litros camping con sillas 2 en 1 negro","cat":"Outdoor","price":71289,"state":"ok","img":"img/p/mesa-cooler-1.webp","alt":"Mesa cooler negra desplegada con dos pisos plegables","gallery":[["img/p/mesa-cooler-1.webp","center"],["img/p/mesa-cooler-2.webp","center"]],"desc":"Este sistema inteligente está pensado para optimizar el espacio en el maletero del auto.","long":["Cuenta con un compartimento interno de gran capacidad térmica que preserva la temperatura de comidas, lunches y bebidas mediante el uso de hielo o geles fríos. Al abrir sus laterales de plástico rígido, se configura una amplia superficie con posavasos integrados. Adicionalmente, incluye dos taburetes o pisos plegables que se guardan de forma compacta y un asa estilo carrito junto con ruedas anchas para un traslado cómodo sobre superficies irregulares."],"specs":[["Capacidad / Volumen","28 Litros."],["Rendimiento Térmico","Mantiene el frío hasta por 24 horas y conserva el calor por un máximo de 3 horas."],["Medidas de la Mesa (Desplegada)","105 cm (Largo) x 51 cm (Ancho) x 42 cm (Alto)."],["Dimensiones Externas (Cerrada)","50 cm x 33.5 cm x 42 cm."],["Dimensiones Internas (Cooler)","44.5 cm x 22 cm x 38 cm."],["Bandeja Extraíble Interna","21.5 cm x 19 cm x 13 cm."],["Materiales de Construcción","Plástico de alta densidad resistente al exterior y componentes de aislamiento térmico."],["Color","Negro."],["Accesorios Incluidos","2 sillas/pisos plegables y 1 bandeja interior extraíble."]]},{"id":"bolsa","name":"Bolsa de Agua Portátil y Plegable Material PP Duradero, Adecuada para Deportes al Aire Libre, ciclismo, motociclismo","cat":"Outdoor","price":3653,"state":"ok","img":"img/p/bolsa-agua-2.webp","alt":"Bolsa de agua plegable azul con mosquetón","gallery":[["img/p/bolsa-agua-2.webp","center"],["img/p/bolsa-agua-4.webp","center"],["img/p/bolsa-agua-3.webp","center"],["img/p/bolsa-agua-1.webp","center"]],"opts":{"label":"Color","note":"Los precios incluyen IVA.","items":[["Botella azul",3653,0],["Botella rosada",3653,1],["Botella verde",3815,2]]},"desc":"Una bolsa de agua portátil y plegable de material duradero ofrece hidratación práctica y ahorro de espacio para tus viajes en moto y deportes al aire libre.","long":["Entre sus principales beneficios están:","• Ahorro de espacio: Se pliega o enrolla por completo cuando está vacía, por lo que ocupa el mínimo espacio en tu mochila o baúl de la moto.","• Peso ligero: Su diseño flexible evita añadir carga pesada a tu equipo durante trayectos largos.","• Resistencia al uso rudo: El material soporta dobleces constantes, fricción y pequeños impactos en caminos de tierra o montaña.","• Hidratación en movimiento: Permite beber agua de forma rápida y cómoda sin necesidad de desmontar o buscar botellas rígidas.","• Fácil mantenimiento: Se lava y se seca con rapidez, lo que previene la acumulación de malos olores o moho."],"specs":[["Material","polipropileno, plástico resistente y seguro que permite que el recipiente sea duradero y flexible a la vez."],["Colores","azul, verde y rosa."],["Dimensiones","11 cm * 26 cm."],["Tiene una capacidad de 473 ml."],["Puedes usarla dentro de una mochila de hidratación o como depósito de respaldo en la moto"]]},{"id":"mug","name":"El Vaso Térmico Mug Inteligente de 500 ml con Termómetro Digital","cat":"Outdoor","price":7464,"state":"ok","img":"img/p/mug-5.webp","alt":"Vaso térmico inteligente naranjo con banda blanca","gallery":[["img/p/mug-5.webp","center"],["img/p/mug-1.webp","center"],["img/p/mug-7.webp","center"],["img/p/mug-6.webp","center"],["img/p/mug-4.webp","center"],["img/p/mug-2.webp","center"],["img/p/mug-8.webp","center"]],"opts":{"label":"Color","items":[["Naranja",7464,0],["Rosa",7464,1],["Blanco con rojo",7464,2],["Negro",7464,3]]},"desc":"El Vaso Térmico Mug Inteligente de 500 ml con Termómetro Digital mantiene tus bebidas frías o calientes mientras muestra la temperatura exacta en tiempo real mediante una pantalla LED táctil integrada en la tapa.","long":["• Control de temperatura: Incorpora un sensor táctil en la tapa que se ilumina al tocarlo para indicar los grados centígrados del líquido sin necesidad de abrirlo.","• Aislamiento: Cuenta con un sistema de doble pared con aislamiento al vacío que conserva bebidas calientes o frías durante varias horas (de 6 a 12 horas según el modelo y uso).","• Diseño y portabilidad: Estructura ergonómica y portátil, ideal para café, té, agua o jugos en la oficina, viajes o actividades al aire libre"],"specs":[["Cantidad","500 ml"],["Material interior","Acero inoxidable de alta resistencia."],["Material exterior","Acero inoxidable combinado con plástico ABS (según versión)"],["Pantalla","Táctil con indicador LED de temperatura"],["Tapa","Sistema de rosca hermético / a prueba de derrames"],["Seguridad","Libre de BPA (Bisfenol A)"],["Peso aproximado","300 g a 450 g (varía según el acabado)"],["Medidas aproximadas","17 cm x 7 cm x 7 cm (varía levemente por diseño)."],["Colores","naranja, rosa blanco con rojo y negro"]]},{"id":"desayuno","name":"Estación de Desayuno 3 en 1: Horno, Sartén y Cafetera 600ml","cat":"Hogar","price":38304,"state":"ok","img":"img/p/desayuno-1.webp","alt":"Estación de desayuno negra con horno, plancha superior y cafetera de goteo","gallery":[["img/p/desayuno-1.webp","center"],["img/p/desayuno-2.webp","center"],["img/p/desayuno-3.webp","center"],["img/p/desayuno-4.webp","center"],["img/p/desayuno-5.webp","center"]],"desc":"","long":["Horno Tostador Eléctrico: Cuenta con una capacidad aproximada de 16 litros. Incluye una rejilla y una bandeja desmontable, ideal para calentar pan, hornear masas pequeñas, recalentar pizzas o tostar alimentos.","Cafetera de Goteo Integrada: Ubicada en el costado derecho. Posee un tanque de agua independiente y viene equipada con una jarra de vidrio templado (con capacidad para unas 4 tazas de café de manera rápida de 600 ml).","Sartén / Plancha Antiadherente Superior: En la parte alta del horno incorpora una superficie tipo parrilla de material antiadherente, protegida con una tapa de vidrio. Es perfecta para freír huevos, asar salchichas, tocino o preparar panqueques simultáneamente mientras se usa el horno o la cafetera.","Controles Independientes: En el panel central tiene perillas giratorias mecánicas para ajustar el temporizador (hasta 30 minutos) y seleccionar los modos de temperatura o activación de las zonas de calor","Fácil de limpiar: Bandeja de migas y plancha antiadherente desmontables y lavables.","Operación simple: Un solo interruptor de encendido/apagado. Sin complicaciones."],"specsIntro":"Entre sus características principales están:","specs":[["Color","Negro"],["Capacidad del horno","16 litros"],["Capacidad cafetera","600 ml"],["Potencia","640 W (horno) / 450 W (cafetera)"],["Voltaje","230–240 V"],["Peso","3,96 kg"],["Dimensiones","51 x 26 x 25 cm"],["Eficiencia energética","Clase A"]]},{"id":"sandwichera","name":"Sandwichera compacta","cat":"Hogar","price":14476,"state":"ok","img":"img/p/sandwichera-3.webp","alt":"Sandwichera compacta Oster negra abierta con placas hondas","gallery":[["img/p/sandwichera-3.webp","center"],["img/p/sandwichera-2.webp","center"],["img/p/sandwichera-1.webp","center"],["img/p/sandwichera-4.webp","center"]],"desc":"La sandwichera compacta Oster® de platos hondos te permite preparar sándwiches con más relleno u ocupando panes más gruesos. Adicionalmente, ahora puedes fácilmente preparar una variedad de platos como huevos revueltos, quesadillas, arepas o panquecas. Disfruta de un sin fin de posibilidades con nuestra nueva sandwichera de platos hondos. Sándwiches tostados de forma rápida y sencilla.","long":["Cuenta con un diseño compacto y forma innovadora que permite preparar sándwiches con más relleno o panes más gruesos.","• Brinda Seguridad y Facilidad, incluye botón ON/OFF con indicador LED, ya no tendrás que desenchufarla.","• Cuenta con más capacidad y versatilidad con un diseño exclusivo, la placa inferior tiene más profundidad, lo que permite preparar sándwiches con hasta 2 panes y tortillas y crepes.","• Muy estable diseño innovador con soportes de goma en la base que garantiza más estabilidad al manipular tu sandwichera.","• Cuenta con el mecanismo DE QUICK LOCK- Con un cierre más grande y robusto que bloquea de forma más fácil y segura."],"specs":[["Peso","1.31 kg"],["Medidas (Alto X Ancho X Largo)","21.5 x 7.8 x 22.3 cm"],["Potencia","750w"],["Recubrimiento de las sandwicheras","Antiadherente"],["Voltaje","220V."],["Tiene capacidad para 2 sándwiches."],["Cuenta con placas para antiadherentes placas lisas."],["Posee una superficie antiadherente que desprende los alimentos con facilidad."],["Dimensiones","7.8cm de ancho, 21.5cm de alto y 22.3cm de largo."]]},{"id":"cuello","name":"Masajeador cuello y hombros","cat":"Bienestar","price":15397,"state":"ok","img":"img/p/masajeador-cuello-1.webp","alt":"Masajeador de cuello y hombros con nodos de masaje y correas","gallery":[["img/p/masajeador-cuello-1.webp","center"],["img/p/masajeador-cuello-2.webp","center"]],"desc":"","long":["Ajustes de velocidad regulables: El masajeador de cuello con almohada incluye 3 niveles de ajuste de velocidad, lo que le permite elegir la intensidad que mejor se adapte a usted. Tanto si prefiere un tacto suave como una sensación más firme, se adapta fácilmente a sus necesidades.","Acción de amasado 3D: Con tecnología de masaje de amasado 3D, la almohada masajeadora de cuello imita las manos humanas con movimientos de empuje y rodamiento. Equipada con múltiples nodos de masaje, actúa eficazmente sobre las zonas de los hombros y el cuello.","Función de calentamiento rápido: El masajeador de cuello ofrece un calentamiento rápido, alcanzando una temperatura confortable en segundos. Este calor complementa el masaje, mejorando la experiencia general. El masajeador de cuello y hombros, junto con la almohada masajeadora de cuello, proporciona una sensación acogedora durante tu momento de relajación.","Diseño cómodo y práctico: Fabricado con materiales suaves y agradables para la piel, el masajeador de cuello y la almohada masajeadora de cuello son fáciles de limpiar y tienen piezas desmontables. Su forma ergonómica se adapta bien a las curvas de los hombros y el cuello, asegurando un ajuste perfecto.","Versátil y portátil: El masajeador de cuello y la almohada masajeadora de cuello son adecuados tanto para hombres como para mujeres, perfectos para usar en casa o en la oficina. Con un diseño ligero, es fácil de transportar y usar donde lo necesite."],"specs":[["Marca","GDPLUS"],["Modos de Masaje","Múltiples niveles de intensidad y dirección."],["Carga","Puerto USB-C."],["Autonomía","Aproximadamente 1 hora de uso continuo."],["Material","Tela de malla transpirable de alta calidad y cuero sintético duradero."],["Apagado Automático","Sensor de seguridad tras 10 minutos de uso."],["Utilice el cable de carga incluido. Solo se admiten cargadores con una potencia nominal de 5V/2A (10W). La carga rápida y los cargadores de baja potencia están desactivados. El producto no se cargará correctamente ni funcionará bien si la potencia del cargador es demasiado alta o baja."]]},{"id":"gato","name":"Cat punching toy","cat":"Tendencias","price":7341,"state":"ok","img":"img/p/gato-toy-1.webp","alt":"Saco de boxeo para gatos con guantes rojos y base de ventosa","gallery":[["img/p/gato-toy-1.webp","center"],["img/p/gato-toy-2.webp","center"]],"desc":"Diseñado para estimular el juego activo, este saco de boxeo para gato mantiene a tu mascota entretenida mientras hace ejercicio diario en interiores. Perfecto para canalizar su energía y reducir el aburrimiento, incluso cuando está solo.","long":["Su diseño inspirado en el boxeo, con saco en miniatura y guantes a juego, despierta la curiosidad natural de tu gato. El tema lúdico y llamativo invita a explorar, golpear y perseguir, potenciando sus instintos de caza de forma divertida.","Perfecto para gatos, gatitos y mascotas de interior, este juguete fomenta el juego independiente o la interacción contigo. Ayuda a combatir el sedentarismo y el estrés, convirtiendo cualquier rincón en un ring de diversión diaria.","La base de ventosa de alta resistencia se adhiere firmemente a superficies lisas como pisos, azulejos o ventanas, brindando estabilidad total durante golpes, zarpazos y juegos intensos. No se cae fácilmente, aguanta el ritmo de juego de tu felino.","Fabricado en tela resistente y suave al tacto, ofrece una estructura firme pero segura para gatos y gatitos. Soporta el uso diario sin deformarse ni dañarse, ideal para sesiones de juego rudo sin preocupaciones."],"specs":[]},{"id":"juego","name":"Juego De Mesa 7 en 1 Billarfutbol-bowlingbasket Niños","cat":"Tendencias","price":15040,"state":"ok","img":"img/p/juego-7en1-2.webp","alt":"Mesa de juego 7 en 1 armada como mini pool con tacos y bolas","gallery":[["img/p/juego-7en1-2.webp","center"],["img/p/juego-7en1-3.webp","center"],["img/p/juego-7en1-4.webp","center"],["img/p/juego-7en1-6.webp","center"],["img/p/juego-7en1-7.webp","center"],["img/p/juego-7en1-8.webp","center"],["img/p/juego-7en1-5.webp","center"],["img/p/juego-7en1-1.webp","center"]],"desc":"El Juego de Mesa 7 en 1 para Niños es un centro de entretenimiento compacto y multifuncional diseñado para el desarrollo de la lógica, la concentración y las habilidades motrices. Reúne una amplia variedad de disciplinas clásicas en un solo tablero intercambiable, lo que optimiza el espacio en el hogar y garantiza horas de diversión en familia","long":["El set destaca por alternar fácilmente entre estos deportes a escala:","1. Billar (Mini Pool)","2. Fútbol de Mesa","3. Bowling (Bolos)","4. Básquetbol (Baloncesto)","5. Golf","6. Hockey sobre Hielo","7. Curling"],"specs":[["Dimensiones (Mesa Armada)","44 cm de ancho x 15 cm de alto x 25 cm de profundidad."],["Materiales","Plástico ABS de alta resistencia y durabilidad."],["Edad Recomendada","Ideal para niños de 6 a 8 años."],["Modo de Juego","Diseñado para 2 o más jugadores (perfecto para partidas entre padres e hijos)."],["Accesorios","Incluye todos los implementos necesarios para armar y jugar cada una de las disciplinas incluidas."]]},{"id":"taca","name":"Juego De Mesa Fútbol Árcade Tipo Pinball Football Taca","cat":"Tendencias","price":7341,"state":"ok","img":"img/p/taca-taca-3.webp","alt":"Mini futbolín de mesa tipo pinball con dos jugadores a cada lado","gallery":[["img/p/taca-taca-3.webp","center"],["img/p/taca-taca-1.webp","center"],["img/p/taca-taca-2.webp","center"]],"desc":"Descubre la emoción del juego con este mini futbolín de mesa, una opción ideal para llevar la diversión a cualquier rincón de tu hogar. Su diseño compacto y fabricación en material ABS de alta calidad, garantizan durabilidad y horas de entretenimiento. Este juego de mesa es perfecto para niños de 9 a 11 años, fomentando la coordinación mano-ojo y la interacción entre dos personas, creando momentos inolvidables de competencia y alegría en familia o con amigos.","long":["Juegos de fiesta doble batalla. Juego interactivo para niños y adultos"],"specs":[["Diseño de moda","100% nuevo, ¡alta calidad!"],["Tamaño","58*28*11 cm"],["Material","ABS de alta calidad"],["Este producto incluye","1 Mini mesa de fútbol + 2 bolas."]]},{"id":"abanico","name":"Abanicos plegables gatos","cat":"Tendencias","price":2610,"state":"ok","img":"img/p/abanico-2.webp","alt":"Abanico plegable redondo con ilustración de gato negro y naranjas","gallery":[["img/p/abanico-2.webp","center"],["img/p/abanico-3.webp","center"],["img/p/abanico-4.webp","center"],["img/p/abanico-1.webp","center"]],"desc":"Abanico plegable con diseño de gato encantador","long":["Abanicos diseñados con una estética de estilo oriental, ideal para eventos formales, obras teatrales, cosplay o uso cotidiano en verano. Disfruta de un abanico portátil con un diseño adorable de gato, ideal para quienes buscan estilo y funcionalidad. Perfecto como accesorio de moda o regalo único.","Doble función de refrigeración y protección solar: Este abanico ofrece refrigeración eficaz y protección contra los rayos solares, ideal para uso al aire libre en días calurosos y soleados.","Plegable y fácil de transportar: Gracias a su diseño plegable, se guarda fácilmente en bolsos, mochilas o incluso en el bolsillo. Su tamaño compacto lo hace perfecto para llevar a cualquier lugar.","Seguro y libre de sustancias químicas peligrosas No contiene químicos preocupantes, cumpliendo con estándares de seguridad. Es una opción segura para personas de todas las edades.","Material de alta calidad y duradero: Fabricado con material de tela para la cubierta y plástico para las varillas, ofrece resistencia y comodidad en el uso diario."],"specsIntro":"Los abanicos plegables con diseño de gatos están hechos principalmente de bambú en sus varillas o estructura y de seda o papel en el cuerpo principal (la tela o panel), con detalles decorativos como borlas de tela.","specs":[["Varillas/Estructura","Fabricadas en bambú natural o madera ligera."],["Tela/Panel (la parte que abre)","Generalmente de seda o tela ligera, decorada con ilustraciones de gatos (a menudo al estilo de animación japonesa o tinta)."],["Complementos","Suelen incluir una borla o colgante de tela en el extremo del mango."]]},{"id":"lavadora","name":"Mini lavadora portátil plegable","cat":"Viajes","price":11834,"state":"ok","img":"img/p/lavadora-2.webp","alt":"Mini lavadora plegable lila con asa","gallery":[["img/p/lavadora-2.webp","center"],["img/p/lavadora-3.webp","center"],["img/p/lavadora-4.webp","center"],["img/p/lavadora-1.webp","center"]],"desc":"La lavadora Mini es adecuada para lavar camisetas, camisas, vestidos, ropa interior, calcetines, etc. (pero no es adecuada para jeans, abrigos y otra ropa pesada).","long":["Adopta la tecnología ultrasónica para formar pequeñas burbujas y manchas, dispersar y emulsionar rápidamente, lograr un efecto de limpieza profundo. Diseño plegable, tamaño pequeño y ahorro de espacio, puedes llevarla de viaje en una aleta, o moverla a cualquier lado por su cómodo tamaño estando plegada"],"specsIntro":"Características Destacadas:","specs":[["Diseño Compacto y de Bolsillo","Medidas desplegado: 26 cm de alto 32 cm de Diámetro Medidas Plegado: 12 cm de lato 32 cm de"],["Ideal para espacios reducidos y aventuras de viaje."],["Construcción Resistente","Fabricada con TPE de calidad alimentaria que resiste el envejecimiento y altas temperaturas."],["Consumo Eficiente","Requiere poco consumo de electricidad y agua gracias a su tecnología silenciosa."],["Capacidad de lavado de 3 a 5 kilos."]]}];
   var byId = {}; P.forEach(function(p){ byId[p.id] = p; });
-  var CATS = ["Viajes","Outdoor","Hogar","Bienestar","Tendencias"], SIZES = ["Compacto","Mediano","Grande"], AVAIL = ["Disponible","Agotado"];
+  var CATS = ["Viajes","Outdoor","Hogar","Bienestar","Tendencias"], AVAIL = ["Disponible","Agotado"];
   var PER_PAGE = 8;
   var HOME = "index.html";
   var clp = function(n){ return "$" + n.toLocaleString("es-CL"); };
@@ -969,12 +975,12 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   var availOf = function(p){ return p.state === "off" ? "Agotado" : "Disponible"; };
   var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var allMin = Math.min.apply(null, P.map(function(p){ return p.price; })), allMax = Math.max.apply(null, P.map(function(p){ return p.price; }));
-  var state = {mode:"catalog", q:"", cat:[], size:[], avail:[], min:allMin, max:allMax, sort:"rel", page:1};
+  var state = {mode:"catalog", q:"", cat:[], avail:[], min:allMin, max:allMax, sort:"rel", page:1};
   var favs = {};
   var base = P, minP = allMin, maxP = allMax;
 
   // Búsqueda: nombre, categoría y descripción del producto
-  function matches(p, q){ var t = norm(q).trim(); if(!t) return true; var hay = norm([p.name, p.cat, p.brand, p.desc, p.long.join(" ")].join(" ")); return t.split(/\s+/).every(function(w){ return hay.indexOf(w) > -1; }); }
+  function matches(p, q){ var t = norm(q).trim(); if(!t) return true; var hay = norm([p.name, p.cat, p.desc, p.long.join(" ")].join(" ")); return t.split(/\s+/).every(function(w){ return hay.indexOf(w) > -1; }); }
   function search(q){ return P.filter(function(p){ return matches(p, q); }); }
 
   // ---------- Vistas ----------
@@ -1003,23 +1009,21 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   function buildFilters(){
     var hide = state.mode === "search";
     document.getElementById("optCat").innerHTML = optHTML("cat", CATS, function(p){ return p.cat; }, hide);
-    document.getElementById("optSize").innerHTML = optHTML("size", SIZES, function(p){ return p.size; }, hide);
     document.getElementById("optAvail").innerHTML = optHTML("avail", AVAIL, availOf, hide);
-    document.querySelector('[data-group="size"]').hidden = hide && !document.getElementById("optSize").innerHTML;
     minP = base.length ? Math.min.apply(null, base.map(function(p){ return p.price; })) : 0;
     maxP = base.length ? Math.max.apply(null, base.map(function(p){ return p.price; })) : 0;
     pMin.placeholder = clp(minP); pMax.placeholder = clp(maxP);
     selCount();
   }
   function selCount(){
-    ["cat","size","avail"].forEach(function(g){
+    ["cat","avail"].forEach(function(g){
       var n = form.querySelectorAll('input[name="' + g + '"]:checked').length;
       document.querySelector('[data-sel="' + g + '"]').textContent = n + (n === 1 ? " seleccionada" : " seleccionadas");
     });
   }
   form.addEventListener("change", selCount);
   function readForm(){
-    ["cat","size","avail"].forEach(function(g){ state[g] = [].map.call(form.querySelectorAll('input[name="' + g + '"]:checked'), function(i){ return i.value; }); });
+    ["cat","avail"].forEach(function(g){ state[g] = [].map.call(form.querySelectorAll('input[name="' + g + '"]:checked'), function(i){ return i.value; }); });
     var a = parseInt(pMin.value, 10), b = parseInt(pMax.value, 10);
     state.min = isNaN(a) ? minP : a; state.max = isNaN(b) ? maxP : b;
     if(state.min > state.max){ var t = state.min; state.min = state.max; state.max = t; }
@@ -1029,18 +1033,15 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     pMin.value = state.min !== minP ? state.min : ""; pMax.value = state.max !== maxP ? state.max : "";
     selCount();
   }
-  function resetFilters(){ state.cat = []; state.size = []; state.avail = []; state.page = 1; state.min = minP; state.max = maxP; }
+  function resetFilters(){ state.cat = []; state.avail = []; state.page = 1; state.min = minP; state.max = maxP; }
 
   function list(){
     var r = base.filter(function(p){
       return (!state.cat.length || state.cat.indexOf(p.cat) > -1) &&
-        (!state.size.length || state.size.indexOf(p.size) > -1) &&
         (!state.avail.length || state.avail.indexOf(availOf(p)) > -1) &&
         p.price >= state.min && p.price <= state.max;
     });
     var s = state.sort;
-    if(s === "sales") r.sort(function(a,b){ return b.sales - a.sales; });
-    if(s === "new") r.sort(function(a,b){ return b.added - a.added; });
     if(s === "asc") r.sort(function(a,b){ return a.price - b.price; });
     if(s === "desc") r.sort(function(a,b){ return b.price - a.price; });
     return r;
@@ -1059,6 +1060,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     if(p.state === "pre") return '<button class="card-cta" type="button" data-add="' + p.id + '">Reservar</button>';
     return '<button class="card-cta" type="button" data-add="' + p.id + '">Agregar al carrito</button>';
   }
+  function fromPrice(p){ return p.opts && p.opts.items.some(function(o){ return o[1] !== p.price; }); }
   function cardHTML(p){
     var badge = "";
     if(p.state === "pre") badge = '<span class="badge badge-pre">Preventa</span>';
@@ -1067,8 +1069,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     return '<article class="card' + (p.state === "off" ? " is-off" : "") + '">' +
       '<div class="card-top"><a class="card-media" href="#p-' + p.id + '"><img src="' + p.img + '" alt="' + esc(p.alt) + '" loading="lazy">' + badge + '</a>' +
       '<button class="fav" type="button" data-fav="' + p.id + '" aria-pressed="' + fav + '" aria-label="Guardar ' + esc(p.name) + ' en favoritos"><svg class="icon"><use href="#i-' + (fav ? 'heart-fill' : 'heart') + '"/></svg></button></div>' +
-      '<div class="card-body"><span class="card-brand">Marca · ' + p.brand + '</span><a class="card-name" href="#p-' + p.id + '">' + esc(p.name) + '</a>' +
-      '<div class="card-price"><strong class="price">' + clp(p.price) + '</strong>' + (p.old ? '<s class="price">' + clp(p.old) + '</s>' : '') + '</div>' +
+      '<div class="card-body"><a class="card-name" href="#p-' + p.id + '">' + esc(p.name) + '</a>' +
+      '<div class="card-price">' + (fromPrice(p) ? '<small>Desde</small>' : '') + '<strong class="price">' + clp(p.price) + '</strong>' + (p.old ? '<s class="price">' + clp(p.old) + '</s>' : '') + '</div>' +
       '<div class="card-meta">' + metaHTML(p) + '</div></div>' + ctaHTML(p) + '</article>';
   }
 
@@ -1076,7 +1078,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   var grid = document.getElementById("grid"), pager = document.getElementById("pager"), countEl = document.getElementById("resultCount"), chips = document.getElementById("chips");
   function chipsHTML(){
     var c = [];
-    ["cat","size","avail"].forEach(function(g){ state[g].forEach(function(v){ c.push('<button class="chip" type="button" data-chip="' + g + '|' + v + '">' + v + '<svg class="icon-sm"><use href="#i-x"/></svg></button>'); }); });
+    ["cat","avail"].forEach(function(g){ state[g].forEach(function(v){ c.push('<button class="chip" type="button" data-chip="' + g + '|' + v + '">' + v + '<svg class="icon-sm"><use href="#i-x"/></svg></button>'); }); });
     if(state.min !== minP || state.max !== maxP) c.push('<button class="chip" type="button" data-chip="price">' + clp(state.min) + ' a ' + clp(state.max) + '<svg class="icon-sm"><use href="#i-x"/></svg></button>');
     return c.join("");
   }
@@ -1102,23 +1104,36 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   // ---------- Ficha de producto ----------
   var cur = {p:null, opt:0, qty:1};
   function stockHTML(p){
-    if(p.state === "ok") return '<span class="stock st-ok">Disponible · quedan ' + p.stock + '</span>';
-    if(p.state === "low") return '<span class="stock st-low">Últimas unidades · quedan ' + p.stock + '</span>';
+    if(p.state === "ok") return '<span class="stock st-ok">Disponible</span>';
+    if(p.state === "low") return '<span class="stock st-low">Últimas unidades</span>';
     if(p.state === "pre") return '<span class="stock st-pre">Preventa · llega el ' + p.date + '</span>';
     return '<span class="stock st-off">Agotado</span>';
   }
+  // Descripción: "• " viñeta, "1. " lista numerada, "Etiqueta: texto" con la etiqueta en negrita
+  function labeled(t){ var m = t.match(/^([^:.]{2,60}):\s(.*)$/); return m ? '<strong>' + esc(m[1]) + ':</strong> ' + esc(m[2]) : esc(t); }
+  function longHTML(list){
+    var h = "", open = "";
+    list.forEach(function(t){
+      var kind = /^• /.test(t) ? "ul" : /^\d+\. /.test(t) ? "ol" : "";
+      if(open && open !== kind){ h += "</" + open + ">"; open = ""; }
+      if(kind && !open){ h += "<" + kind + ">"; open = kind; }
+      h += kind ? "<li>" + labeled(t.replace(/^(• |\d+\. )/, "")) + "</li>" : "<p>" + labeled(t) + "</p>";
+    });
+    return h + (open ? "</" + open + ">" : "");
+  }
+  function showImg(i){ var g = cur.p.gallery[i], img = document.getElementById("mainImg"); if(!g || !img) return; img.src = g[0]; img.style.objectPosition = g[1]; pdp.querySelectorAll("[data-thumb]").forEach(function(b){ if(+b.dataset.thumb === i) b.setAttribute("aria-current","true"); else b.removeAttribute("aria-current"); }); }
   function priceOf(p){ return p.opts ? p.opts.items[cur.opt][1] : p.price; }
   function renderProduct(p){
     cur = {p:p, opt:0, qty:1};
     var thumbs = p.gallery.map(function(g, i){ return '<button class="thumb" type="button" data-thumb="' + i + '"' + (i ? '' : ' aria-current="true"') + ' aria-label="Ver imagen ' + (i + 1) + ' de ' + p.gallery.length + '"><img src="' + g[0] + '" alt="" style="object-position:' + g[1] + '"></button>'; }).join("");
     var opts = p.opts ? '<fieldset class="variants"><legend>' + p.opts.label + ' <span>· selecciona una variante</span></legend><div class="var-grid">' +
-      p.opts.items.map(function(o, i){ return '<label class="var"><input type="radio" name="variant" value="' + i + '"' + (i ? '' : ' checked') + '><span class="var-box"><span>' + o[0] + '</span><strong class="price">' + clp(o[1]) + '</strong></span></label>'; }).join("") + '</div></fieldset>' : '';
+      p.opts.items.map(function(o, i){ return '<label class="var"><input type="radio" name="variant" value="' + i + '"' + (i ? '' : ' checked') + '><span class="var-box"><span>' + o[0] + '</span><strong class="price">' + clp(o[1]) + '</strong></span></label>'; }).join("") + '</div>' + (p.opts.note ? '<p class="var-note">' + esc(p.opts.note) + '</p>' : '') + '</fieldset>' : '';
     var buy = p.state === "off" ?
       '<div class="buy-off"><p>Este producto está agotado. Te avisamos por correo cuando vuelva.</p><button class="btn btn-primary" type="button" data-notify-pdp><svg class="icon-sm"><use href="#i-bell"/></svg>Avísame cuando llegue</button></div>' :
       '<div class="buy-row"><div class="qty qty-lg" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno"><svg class="icon-sm"><use href="#i-minus"/></svg></button><span id="qtyVal">1</span><button type="button" data-q="1" aria-label="Agregar uno"><svg class="icon-sm"><use href="#i-plus"/></svg></button></div>' +
       '<button class="btn btn-primary" type="button" data-add-pdp>' + (p.state === "pre" ? 'Reservar' : 'Agregar al carrito') + '</button>' +
       '<button class="btn btn-outline" type="button" data-buy-now>Comprar ahora</button></div>';
-    var rec = P.filter(function(x){ return x.id !== p.id && x.cat === p.cat; }).concat(P.filter(function(x){ return x.id !== p.id && x.cat !== p.cat; }).sort(function(a,b){ return b.sales - a.sales; })).slice(0, 4);
+    var rec = P.filter(function(x){ return x.id !== p.id && x.cat === p.cat; }).concat(P.filter(function(x){ return x.id !== p.id && x.cat !== p.cat; })).slice(0, 4);
     pdp.innerHTML =
       '<div class="pdp-top">' +
         '<div class="gallery"><div class="thumbs" role="group" aria-label="Imágenes del producto">' + thumbs + '</div>' +
@@ -1127,7 +1142,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
         '<div class="buy">' +
           '<a class="buy-cat" href="#' + p.cat.toLowerCase() + '">' + p.cat + '</a>' +
           '<h1>' + esc(p.name) + '</h1>' +
-          '<p class="lead">' + esc(p.desc) + '</p>' +
+          (p.desc ? '<p class="lead">' + esc(p.desc) + '</p>' : '') +
           '<div class="pdp-price"><strong class="price" id="pdpPrice">' + clp(priceOf(p)) + '</strong>' + (p.old && !p.opts ? '<s class="price">' + clp(p.old) + '</s>' : '') + '<small>IVA incluido</small></div>' +
           stockHTML(p) +
           '<button class="pdp-fav" type="button" data-fav="' + p.id + '" aria-pressed="false"><svg class="icon-sm"><use href="#i-heart"/></svg>Guardar en favoritos</button>' +
@@ -1136,16 +1151,16 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
         '</div>' +
       '</div>' +
       '<section class="pdp-tabs" aria-label="Información del producto">' +
-        '<div class="tablist" role="tablist"><button type="button" role="tab" id="tab-desc" aria-controls="panel-desc" aria-selected="true">Descripción</button><button type="button" role="tab" id="tab-spec" aria-controls="panel-spec" aria-selected="false" tabindex="-1">Especificaciones técnicas</button></div>' +
-        '<div class="tabpanel" role="tabpanel" id="panel-desc" aria-labelledby="tab-desc">' + p.long.map(function(t){ return '<p>' + esc(t) + '</p>'; }).join("") + '</div>' +
-        '<div class="tabpanel" role="tabpanel" id="panel-spec" aria-labelledby="tab-spec" hidden><dl class="specs">' + p.specs.map(function(s){ return '<div><dt>' + esc(s[0]) + '</dt><dd>' + esc(s[1]) + '</dd></div>'; }).join("") + '</dl><p class="spec-note">Datos de referencia para la maqueta.</p></div>' +
+        '<div class="tablist" role="tablist"><button type="button" role="tab" id="tab-desc" aria-controls="panel-desc" aria-selected="true">Descripción</button>' + (p.specs.length ? '<button type="button" role="tab" id="tab-spec" aria-controls="panel-spec" aria-selected="false" tabindex="-1">Especificaciones técnicas</button>' : '') + '</div>' +
+        '<div class="tabpanel" role="tabpanel" id="panel-desc" aria-labelledby="tab-desc">' + longHTML(p.long) + '</div>' +
+        (p.specs.length ? '<div class="tabpanel" role="tabpanel" id="panel-spec" aria-labelledby="tab-spec" hidden>' + (p.specsIntro ? '<p class="spec-intro">' + esc(p.specsIntro) + '</p>' : '') + '<dl class="specs">' + p.specs.map(function(s){ return s.length === 1 ? '<div class="full"><dd>' + esc(s[0]) + '</dd></div>' : '<div><dt>' + esc(s[0]) + '</dt><dd>' + esc(s[1]) + '</dd></div>'; }).join("") + '</dl></div>' : '') +
       '</section>' +
       '<section class="pdp-rec" aria-labelledby="recTitle"><h2 id="recTitle">Productos recomendados</h2><div class="grid-4">' + rec.map(cardHTML).join("") + '</div></section>';
     document.title = p.name + " | TODONOVO";
   }
   pdp.addEventListener("click", function(e){
     var t = e.target.closest("[data-thumb]");
-    if(t){ var g = cur.p.gallery[+t.dataset.thumb], img = document.getElementById("mainImg"); img.src = g[0]; img.style.objectPosition = g[1]; pdp.querySelectorAll("[data-thumb]").forEach(function(b){ b.toggleAttribute("aria-current", b === t); if(b === t) b.setAttribute("aria-current","true"); }); return; }
+    if(t){ showImg(+t.dataset.thumb); return; }
     var q = e.target.closest("[data-q]");
     if(q){ cur.qty = Math.max(1, Math.min(10, cur.qty + +q.dataset.q)); document.getElementById("qtyVal").textContent = cur.qty; return; }
     if(e.target.closest("[data-add-pdp]") || e.target.closest("[data-buy-now]")){ addToCart(cur.p.id, cur.qty); openCart(); return; }
@@ -1154,7 +1169,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     var tab = e.target.closest('[role="tab"]');
     if(tab){ selectTab(tab); }
   });
-  pdp.addEventListener("change", function(e){ if(e.target.name === "variant"){ cur.opt = +e.target.value; document.getElementById("pdpPrice").textContent = clp(priceOf(cur.p)); } });
+  pdp.addEventListener("change", function(e){ if(e.target.name === "variant"){ cur.opt = +e.target.value; document.getElementById("pdpPrice").textContent = clp(priceOf(cur.p)); var gi = cur.p.opts.items[cur.opt][2]; if(gi != null) showImg(gi); } });
   pdp.addEventListener("keydown", function(e){
     var tab = e.target.closest('[role="tab"]'); if(!tab || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
     var tabs = [].slice.call(pdp.querySelectorAll('[role="tab"]')), i = tabs.indexOf(tab), nx = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
@@ -1287,7 +1302,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   mnav.addEventListener("click", function(e){ if(e.target.closest("a") && !e.target.closest(".suggest")){ mnav.hidden = true; menuBtn.setAttribute("aria-expanded", false); } });
 
   // ---------- Carrito lateral ----------
-  var cart = [{id:"botella",q:1},{id:"ampolleta",q:1}];
+  var cart = [{id:"mug",q:1},{id:"abanico",q:1}];
   var drawer = document.getElementById("drawer");
   var itemsEl = document.getElementById("cartItems"), foot = document.getElementById("cartFoot");
   var cCount = document.getElementById("cartCount"), subEl = document.getElementById("subtotal");
@@ -1333,7 +1348,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 <script>
 (function(){
   // Favoritos compartidos entre páginas (se guardan en este navegador; la maqueta no tiene cuenta de usuario)
-  var CAT = {"botella":{"name":"Botella plegable Fútbol","cat":"Outdoor","price":12990,"img":"img/prod-botella-futbol.jpg"},"facial":{"name":"Masajeador facial 3 en 1","cat":"Bienestar","price":24990,"img":"img/prod-masajeador-facial.jpg"},"ampolleta":{"name":"Ampolleta inteligente RGB","cat":"Hogar","price":9990,"img":"img/prod-ampolleta.jpg"},"lentes":{"name":"Lentes con IA y audio","cat":"Tendencias","price":79990,"img":"img/prod-lentes-ia.jpg"},"bolsa":{"name":"Bolsa de agua plegable","cat":"Viajes","price":4990,"img":"img/prod-bolsa-agua.jpg"},"cuello":{"name":"Masajeador de cuello portátil","cat":"Bienestar","price":34900,"img":"img/cat-bienestar.jpg"},"desayuno":{"name":"Desayunador 3 en 1","cat":"Hogar","price":54990,"img":"img/cat-hogar.jpg"},"gato":{"name":"Saco de boxeo para gatos","cat":"Tendencias","price":8990,"img":"img/cat-tendencias.jpg"},"linterna":{"name":"Linterna solar plegable","cat":"Outdoor","price":15600,"img":"img/cat-outdoor.jpg"},"kitviaje":{"name":"Almohada de viaje y organizadores","cat":"Viajes","price":19990,"img":"img/cat-viajes.jpg"}};
+  var CAT = {"botella":{"name":"Botella de agua plegable fútbol","cat":"Outdoor","price":5187,"img":"img/p/botella-futbol-1.webp"},"mesa":{"name":"Mesa cooler 28 litros camping con sillas 2 en 1 negro","cat":"Outdoor","price":71289,"img":"img/p/mesa-cooler-1.webp"},"bolsa":{"name":"Bolsa de Agua Portátil y Plegable Material PP Duradero, Adecuada para Deportes al Aire Libre, ciclismo, motociclismo","cat":"Outdoor","price":3653,"img":"img/p/bolsa-agua-2.webp"},"mug":{"name":"El Vaso Térmico Mug Inteligente de 500 ml con Termómetro Digital","cat":"Outdoor","price":7464,"img":"img/p/mug-5.webp"},"desayuno":{"name":"Estación de Desayuno 3 en 1: Horno, Sartén y Cafetera 600ml","cat":"Hogar","price":38304,"img":"img/p/desayuno-1.webp"},"sandwichera":{"name":"Sandwichera compacta","cat":"Hogar","price":14476,"img":"img/p/sandwichera-3.webp"},"cuello":{"name":"Masajeador cuello y hombros","cat":"Bienestar","price":15397,"img":"img/p/masajeador-cuello-1.webp"},"gato":{"name":"Cat punching toy","cat":"Tendencias","price":7341,"img":"img/p/gato-toy-1.webp"},"juego":{"name":"Juego De Mesa 7 en 1 Billarfutbol-bowlingbasket Niños","cat":"Tendencias","price":15040,"img":"img/p/juego-7en1-2.webp"},"taca":{"name":"Juego De Mesa Fútbol Árcade Tipo Pinball Football Taca","cat":"Tendencias","price":7341,"img":"img/p/taca-taca-3.webp"},"abanico":{"name":"Abanicos plegables gatos","cat":"Tendencias","price":2610,"img":"img/p/abanico-2.webp"},"lavadora":{"name":"Mini lavadora portátil plegable","cat":"Viajes","price":11834,"img":"img/p/lavadora-2.webp"}};
   var LINK = "";
   var KEY = "todonovo-favoritos";
   var clp = function(n){ return "$" + n.toLocaleString("es-CL"); };

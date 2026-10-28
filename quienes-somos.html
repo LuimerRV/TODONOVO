@@ -25,6 +25,7 @@
   --surface:#C4FEE0;
   --surface-soft:#F0FFF7;
   --img-bg:#F2FBF6;
+  --img-grad:radial-gradient(130% 110% at 28% 20%,#EEF5F1 0%,#E3EBE6 45%,#D6DFDA 100%);
   --cat-bg:#C4FEE0;
   --cat-fg:#0A2B63;
   --lime:#A5F500;
@@ -54,7 +55,7 @@
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --bg:#07162F;--ink:#9CC7FF;--ink-strong:#E8F1FF;--muted:#A9BDDA;--line:#1D3761;
-    --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--cat-bg:#BDEFD5;--cat-fg:#07162F;
+    --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--img-grad:radial-gradient(130% 110% at 28% 20%,#E6EFEA 0%,#DCE5E0 45%,#CED8D3 100%);--cat-bg:#BDEFD5;--cat-fg:#07162F;
     --btn-bg:#C4FEE0;--btn-fg:#07162F;--btn-bg-hover:#A8F2CB;--band-bg:#0B2A5E;--band-fg:#FFFFFF;
     --ok:#6FE3A8;--low-bg:#4A2314;--low-fg:#FFB896;--off-fg:#8A9BB5;--scrim:rgba(0,0,0,.6);
     --shadow:0 12px 32px rgba(0,0,0,.35);--img-blend:normal;
@@ -63,7 +64,7 @@
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#07162F;--ink:#9CC7FF;--ink-strong:#E8F1FF;--muted:#A9BDDA;--line:#1D3761;
-  --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--cat-bg:#BDEFD5;--cat-fg:#07162F;
+  --surface:#0F3A45;--surface-soft:#0B2141;--img-bg:#EAF4EF;--img-grad:radial-gradient(130% 110% at 28% 20%,#E6EFEA 0%,#DCE5E0 45%,#CED8D3 100%);--cat-bg:#BDEFD5;--cat-fg:#07162F;
   --btn-bg:#C4FEE0;--btn-fg:#07162F;--btn-bg-hover:#A8F2CB;--band-bg:#0B2A5E;--band-fg:#FFFFFF;
   --ok:#6FE3A8;--low-bg:#4A2314;--low-fg:#FFB896;--off-fg:#8A9BB5;--scrim:rgba(0,0,0,.6);
   --shadow:0 12px 32px rgba(0,0,0,.35);--img-blend:normal;
@@ -221,8 +222,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--bg);transition:box-shadow .3s,transform .3s cubic-bezier(.16,1,.3,1)}
 .card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
 .card-top{position:relative}
-.card-media{position:relative;display:block;background:var(--img-bg);aspect-ratio:1}
-.card-media img{width:100%;height:100%;object-fit:cover;mix-blend-mode:var(--img-blend);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.card-media{position:relative;display:block;background:var(--img-grad);aspect-ratio:1}
+.card-media img{width:100%;height:100%;object-fit:contain;padding:8.2%;box-sizing:border-box;mix-blend-mode:var(--img-blend);filter:drop-shadow(0 14px 14px rgba(10,43,99,.14));transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .card:hover .card-media img{transform:scale(1.04)}
 .badge{position:absolute;left:12px;top:12px;height:28px;padding-inline:12px;border-radius:999px;font-size:13px;font-weight:700;display:inline-flex;align-items:center}
 .badge-sale{background:var(--orange);color:#0A2B63}
@@ -234,7 +235,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .card-body,.line,.reel-info,.pre-copy p,.tile p,.drop-panel span,.countdown{font-family:var(--font-text)}
 .card-body{display:grid;gap:4px;padding:14px 16px 16px}
 .card-cat{font-size:13px;color:var(--muted)}
-.card-name{font-size:17px;font-weight:500;color:var(--ink-strong);line-height:1.25}
+.card-name{font-size:17px;font-weight:500;color:var(--ink-strong);line-height:1.25;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card-name:hover{color:var(--ink)}
 .card-price{display:flex;align-items:baseline;gap:8px;margin-top:4px}
 .card-price strong{font-size:20px;color:var(--ink);font-weight:700}
@@ -285,6 +286,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .pre{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-card);overflow:hidden;background:var(--lime);color:#0A2B63}
 .pre-media{position:relative;min-height:420px}
 .pre-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pre-media.is-cutout{background:radial-gradient(circle at 50% 42%,#2F74D6 0,#004AAD 58%,#003A8C 100%)}
+.pre-media.is-cutout img{object-fit:contain;padding:clamp(24px,4vw,48px);filter:drop-shadow(0 26px 26px rgba(0,20,60,.35))}
 .pre-copy{padding:clamp(28px,4.5vw,64px);display:grid;align-content:center;gap:16px}
 .pre-copy .badge-pre{position:static;justify-self:start;height:32px;padding-inline:14px;font-size:14px}
 .pre-copy h2{color:#0A2B63;font-size:clamp(32px,3.125vw,45px)}
@@ -305,7 +308,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .trust span{font-size:14px;color:rgba(255,255,255,.8)}
 
 /* Míralo en uso */
-.social{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.social{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .reel{display:grid;gap:12px}
 .reel-media{position:relative;display:block;aspect-ratio:9/16;border-radius:var(--r-card);overflow:hidden;background:var(--surface-soft)}
 .reel-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
@@ -363,7 +366,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .drawer-items{flex:1;overflow-y:auto;padding:8px 20px;display:grid;align-content:start}
 .line{display:grid;grid-template-columns:80px 1fr auto;gap:14px;padding-block:16px;border-bottom:1px solid var(--line)}
 .line:last-child{border-bottom:0}
-.line img{width:80px;height:80px;border-radius:12px;object-fit:cover}
+.line img{width:80px;height:80px;border-radius:12px;object-fit:contain;background:var(--img-grad)}
 .line-name{font-weight:500;line-height:1.25}
 .line-cat{font-size:13px;color:var(--muted)}
 .qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;margin-top:8px}
@@ -406,7 +409,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   .grid-4{grid-template-columns:repeat(2,1fr);gap:14px}
   .track{grid-auto-columns:calc((100% - 14px) / 2);gap:14px}
   .trust ul{grid-template-columns:repeat(2,1fr)}
-  .social{grid-template-columns:repeat(2,1fr);gap:14px}
+  .social{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:46%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .footer-grid{grid-template-columns:repeat(3,1fr)}
   .footer-brand,.footer-pay{grid-column:1 / -1}
   .footer-pay{grid-template-columns:auto auto;justify-content:start;align-items:center}
@@ -452,7 +455,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .suggest{position:absolute;right:0;top:calc(100% + 8px);z-index:45;width:380px;max-width:calc(100vw - 32px);background:var(--bg);border:1px solid var(--line);border-radius:var(--r-card);box-shadow:var(--shadow);padding:8px;display:grid;gap:2px;font-family:var(--font-text)}
 .s-item{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:8px;border-radius:12px}
 .s-item:hover,.s-item:focus-visible{background:var(--surface-soft);outline:none}
-.s-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--img-bg)}
+.s-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--img-grad)}
 .s-item strong{display:block;font-size:14px;font-weight:500;color:var(--ink-strong);line-height:1.3}
 .s-item small{font-size:12px;color:var(--muted)}
 .s-item b{font-size:14px;color:var(--ink)}
@@ -589,11 +592,11 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
       <div class="nav-drop" id="drop">
         <a href="tienda.html">Tienda</a><button type="button" id="dropBtn" aria-expanded="false" aria-controls="dropPanel" aria-label="Ver categorías de la tienda"><svg class="icon-sm"><use href="#i-caret-down"/></svg></button>
         <div class="drop-panel" id="dropPanel" hidden>
-          <a href="tienda.html#viajes"><img src="img/cat-viajes.png" alt=""><div><strong>Viajes</strong><span>12 productos</span></div></a>
-          <a href="tienda.html#outdoor"><img src="img/cat-outdoor.png" alt=""><div><strong>Outdoor</strong><span>9 productos</span></div></a>
-          <a href="tienda.html#hogar"><img src="img/cat-hogar.png" alt=""><div><strong>Hogar</strong><span>14 productos</span></div></a>
-          <a href="tienda.html#bienestar"><img src="img/cat-bienestar.png" alt=""><div><strong>Bienestar</strong><span>7 productos</span></div></a>
-          <a href="tienda.html#tendencias"><img src="img/cat-tendencias.png" alt=""><div><strong>Tendencias</strong><span>8 productos</span></div></a>
+          <a href="tienda.html#viajes"><img src="img/cat-viajes.png" alt=""><div><strong>Viajes</strong><span>1 producto</span></div></a>
+          <a href="tienda.html#outdoor"><img src="img/cat-outdoor.png" alt=""><div><strong>Outdoor</strong><span>4 productos</span></div></a>
+          <a href="tienda.html#hogar"><img src="img/cat-hogar.png" alt=""><div><strong>Hogar</strong><span>2 productos</span></div></a>
+          <a href="tienda.html#bienestar"><img src="img/cat-bienestar.png" alt=""><div><strong>Bienestar</strong><span>1 producto</span></div></a>
+          <a href="tienda.html#tendencias"><img src="img/cat-tendencias.png" alt=""><div><strong>Tendencias</strong><span>4 productos</span></div></a>
           <a class="drop-all" href="tienda.html">Ver todo el catálogo</a>
         </div>
       </div>
@@ -740,7 +743,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 <script>
 (function(){
   var TIENDA = "tienda.html";
-  var P = [{"id":"botella","name":"Botella plegable Fútbol","cat":"Outdoor","price":12990,"img":"img/prod-botella-futbol.jpg","state":"ok","alt":"Botella de agua plegable con diseño de balón de fútbol"},{"id":"facial","name":"Masajeador facial 3 en 1","cat":"Bienestar","price":24990,"img":"img/prod-masajeador-facial.jpg","state":"low","alt":"Masajeador facial verde con cabezales dorados"},{"id":"ampolleta","name":"Ampolleta inteligente RGB","cat":"Hogar","price":9990,"img":"img/prod-ampolleta.jpg","state":"ok","alt":"Ampolleta LED iluminada con colores"},{"id":"lentes","name":"Lentes con IA y audio","cat":"Tendencias","price":79990,"img":"img/prod-lentes-ia.jpg","state":"pre","date":"15 oct","alt":"Lentes negros con cámara y parlantes integrados"},{"id":"bolsa","name":"Bolsa de agua plegable","cat":"Viajes","price":4990,"img":"img/prod-bolsa-agua.jpg","state":"ok","alt":"Bolsa de agua plegable azul con mosquetón"},{"id":"cuello","name":"Masajeador de cuello portátil","cat":"Bienestar","price":34900,"img":"img/cat-bienestar.jpg","state":"ok","alt":"Masajeador de cuello gris con calor"},{"id":"desayuno","name":"Desayunador 3 en 1","cat":"Hogar","price":54990,"img":"img/cat-hogar.jpg","state":"low","alt":"Desayunador con horno, plancha y cafetera"},{"id":"gato","name":"Saco de boxeo para gatos","cat":"Tendencias","price":8990,"img":"img/cat-tendencias.jpg","state":"off","alt":"Saco de boxeo negro para gatos con dos guantes colgantes y base de ventosa"},{"id":"linterna","name":"Linterna solar plegable","cat":"Outdoor","price":15600,"img":"img/cat-outdoor.jpg","state":"ok","alt":"Linterna solar plegable encendida"},{"id":"kitviaje","name":"Almohada de viaje y organizadores","cat":"Viajes","price":19990,"img":"img/cat-viajes.jpg","state":"ok","alt":"Almohada de viaje sobre tres organizadores de maleta"}];
+  var P = [{"id":"botella","name":"Botella de agua plegable fútbol","cat":"Outdoor","price":5187,"img":"img/p/botella-futbol-1.webp","state":"ok","alt":"Dos botellas plegables con diseño de balón de fútbol, una plegada y otra extendida"},{"id":"mesa","name":"Mesa cooler 28 litros camping con sillas 2 en 1 negro","cat":"Outdoor","price":71289,"img":"img/p/mesa-cooler-1.webp","state":"ok","alt":"Mesa cooler negra desplegada con dos pisos plegables"},{"id":"bolsa","name":"Bolsa de Agua Portátil y Plegable Material PP Duradero, Adecuada para Deportes al Aire Libre, ciclismo, motociclismo","cat":"Outdoor","price":3653,"img":"img/p/bolsa-agua-2.webp","state":"ok","alt":"Bolsa de agua plegable azul con mosquetón"},{"id":"mug","name":"El Vaso Térmico Mug Inteligente de 500 ml con Termómetro Digital","cat":"Outdoor","price":7464,"img":"img/p/mug-5.webp","state":"ok","alt":"Vaso térmico inteligente naranjo con banda blanca"},{"id":"desayuno","name":"Estación de Desayuno 3 en 1: Horno, Sartén y Cafetera 600ml","cat":"Hogar","price":38304,"img":"img/p/desayuno-1.webp","state":"ok","alt":"Estación de desayuno negra con horno, plancha superior y cafetera de goteo"},{"id":"sandwichera","name":"Sandwichera compacta","cat":"Hogar","price":14476,"img":"img/p/sandwichera-3.webp","state":"ok","alt":"Sandwichera compacta Oster negra abierta con placas hondas"},{"id":"cuello","name":"Masajeador cuello y hombros","cat":"Bienestar","price":15397,"img":"img/p/masajeador-cuello-1.webp","state":"ok","alt":"Masajeador de cuello y hombros con nodos de masaje y correas"},{"id":"gato","name":"Cat punching toy","cat":"Tendencias","price":7341,"img":"img/p/gato-toy-1.webp","state":"ok","alt":"Saco de boxeo para gatos con guantes rojos y base de ventosa"},{"id":"juego","name":"Juego De Mesa 7 en 1 Billarfutbol-bowlingbasket Niños","cat":"Tendencias","price":15040,"img":"img/p/juego-7en1-2.webp","state":"ok","alt":"Mesa de juego 7 en 1 armada como mini pool con tacos y bolas"},{"id":"taca","name":"Juego De Mesa Fútbol Árcade Tipo Pinball Football Taca","cat":"Tendencias","price":7341,"img":"img/p/taca-taca-3.webp","state":"ok","alt":"Mini futbolín de mesa tipo pinball con dos jugadores a cada lado"},{"id":"abanico","name":"Abanicos plegables gatos","cat":"Tendencias","price":2610,"img":"img/p/abanico-2.webp","state":"ok","alt":"Abanico plegable redondo con ilustración de gato negro y naranjas"},{"id":"lavadora","name":"Mini lavadora portátil plegable","cat":"Viajes","price":11834,"img":"img/p/lavadora-2.webp","state":"ok","alt":"Mini lavadora plegable lila con asa"}];
   var byId = {}; P.forEach(function(p){ byId[p.id] = p; });
   var clp = function(n){ return "$" + n.toLocaleString("es-CL"); };
   var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
@@ -790,7 +793,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   });
 
   // Carrito lateral
-  var cart = [{id:"botella",q:1},{id:"ampolleta",q:1}];
+  var cart = [{id:"mug",q:1},{id:"abanico",q:1}];
   var drawer = document.getElementById("drawer"), scrim = document.getElementById("scrim");
   var itemsEl = document.getElementById("cartItems"), foot = document.getElementById("cartFoot");
   var countEl = document.getElementById("cartCount"), subEl = document.getElementById("subtotal");
@@ -830,7 +833,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 <script>
 (function(){
   // Favoritos compartidos entre páginas (se guardan en este navegador; la maqueta no tiene cuenta de usuario)
-  var CAT = {"botella":{"name":"Botella plegable Fútbol","cat":"Outdoor","price":12990,"img":"img/prod-botella-futbol.jpg"},"facial":{"name":"Masajeador facial 3 en 1","cat":"Bienestar","price":24990,"img":"img/prod-masajeador-facial.jpg"},"ampolleta":{"name":"Ampolleta inteligente RGB","cat":"Hogar","price":9990,"img":"img/prod-ampolleta.jpg"},"lentes":{"name":"Lentes con IA y audio","cat":"Tendencias","price":79990,"img":"img/prod-lentes-ia.jpg"},"bolsa":{"name":"Bolsa de agua plegable","cat":"Viajes","price":4990,"img":"img/prod-bolsa-agua.jpg"},"cuello":{"name":"Masajeador de cuello portátil","cat":"Bienestar","price":34900,"img":"img/cat-bienestar.jpg"},"desayuno":{"name":"Desayunador 3 en 1","cat":"Hogar","price":54990,"img":"img/cat-hogar.jpg"},"gato":{"name":"Saco de boxeo para gatos","cat":"Tendencias","price":8990,"img":"img/cat-tendencias.jpg"},"linterna":{"name":"Linterna solar plegable","cat":"Outdoor","price":15600,"img":"img/cat-outdoor.jpg"},"kitviaje":{"name":"Almohada de viaje y organizadores","cat":"Viajes","price":19990,"img":"img/cat-viajes.jpg"}};
+  var CAT = {"botella":{"name":"Botella de agua plegable fútbol","cat":"Outdoor","price":5187,"img":"img/p/botella-futbol-1.webp"},"mesa":{"name":"Mesa cooler 28 litros camping con sillas 2 en 1 negro","cat":"Outdoor","price":71289,"img":"img/p/mesa-cooler-1.webp"},"bolsa":{"name":"Bolsa de Agua Portátil y Plegable Material PP Duradero, Adecuada para Deportes al Aire Libre, ciclismo, motociclismo","cat":"Outdoor","price":3653,"img":"img/p/bolsa-agua-2.webp"},"mug":{"name":"El Vaso Térmico Mug Inteligente de 500 ml con Termómetro Digital","cat":"Outdoor","price":7464,"img":"img/p/mug-5.webp"},"desayuno":{"name":"Estación de Desayuno 3 en 1: Horno, Sartén y Cafetera 600ml","cat":"Hogar","price":38304,"img":"img/p/desayuno-1.webp"},"sandwichera":{"name":"Sandwichera compacta","cat":"Hogar","price":14476,"img":"img/p/sandwichera-3.webp"},"cuello":{"name":"Masajeador cuello y hombros","cat":"Bienestar","price":15397,"img":"img/p/masajeador-cuello-1.webp"},"gato":{"name":"Cat punching toy","cat":"Tendencias","price":7341,"img":"img/p/gato-toy-1.webp"},"juego":{"name":"Juego De Mesa 7 en 1 Billarfutbol-bowlingbasket Niños","cat":"Tendencias","price":15040,"img":"img/p/juego-7en1-2.webp"},"taca":{"name":"Juego De Mesa Fútbol Árcade Tipo Pinball Football Taca","cat":"Tendencias","price":7341,"img":"img/p/taca-taca-3.webp"},"abanico":{"name":"Abanicos plegables gatos","cat":"Tendencias","price":2610,"img":"img/p/abanico-2.webp"},"lavadora":{"name":"Mini lavadora portátil plegable","cat":"Viajes","price":11834,"img":"img/p/lavadora-2.webp"}};
   var LINK = "tienda.html";
   var KEY = "todonovo-favoritos";
   var clp = function(n){ return "$" + n.toLocaleString("es-CL"); };
