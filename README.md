@@ -8,6 +8,7 @@ Maqueta navegable del ecommerce TODONOVO (diseño, no conectada a Shopify).
 - `quienes-somos.html` · Quiénes somos
 - `preguntas-frecuentes.html` · Preguntas frecuentes
 - `contacto.html` · Contacto
+- `terminos-y-condiciones.html`, `politica-de-privacidad.html`, `politica-de-despacho.html`, `cambios-y-devoluciones.html` · Páginas legales (enlazadas desde el pie)
 
 ## Ver en local
 Abre `index.html` en el navegador. Para que todo funcione igual que publicado, conviene servir la carpeta, por ejemplo:

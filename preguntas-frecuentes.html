@@ -318,7 +318,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 
 /* Footer */
 .footer{background:var(--surface-soft);border-top:1px solid var(--line);padding-block:56px 28px;margin-top:clamp(24px,4vw,48px)}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.footer-grid{display:grid;grid-template-columns:1.35fr .95fr .8fr 1.25fr 1fr;gap:32px}
 .footer-brand img{height:84px;width:auto}
 .footer-brand p{margin-top:14px;color:var(--muted);max-width:30ch}
 .contact{margin-top:14px;display:grid;gap:4px;font-size:15px;color:var(--ink-strong)}
@@ -327,7 +327,20 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .socials{display:flex;gap:8px;margin-top:16px}
 .socials a{width:40px;height:40px;border-radius:999px;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--ink)}
 .socials a:hover{border-color:var(--ink)}
-.footer h3{font-size:15px;color:var(--ink-strong);margin-bottom:12px}
+.footer h3{font-family:var(--font);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.company{margin:16px 0 0;display:grid;gap:4px;font-size:15px}
+.company div{display:flex;gap:6px;flex-wrap:wrap}
+.company dt{color:var(--muted)}
+.company dd{margin:0;font-weight:700;color:var(--ink-strong)}
+.company a{color:var(--ink-strong)}
+.company a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.hours{margin-top:12px;font-size:14px;line-height:1.55;color:var(--ink-strong)}
+.hours span{color:var(--muted)}
+.footer-about p{margin-top:12px;font-size:14px;line-height:1.6;color:var(--muted);max-width:34ch}
+.footer-pay{display:grid;gap:12px;align-content:start;justify-items:start}
+.footer-pay img{display:block;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+.footer-pay img:first-of-type{width:100%;max-width:150px}
+.footer-pay img:last-of-type{width:100%;max-width:150px;padding:0;overflow:hidden}
 .footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .footer ul a{color:var(--muted);font-size:15px}
 .footer ul a:hover{color:var(--ink)}
@@ -394,8 +407,10 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   .track{grid-auto-columns:calc((100% - 14px) / 2);gap:14px}
   .trust ul{grid-template-columns:repeat(2,1fr)}
   .social{grid-template-columns:repeat(2,1fr);gap:14px}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .footer-brand{grid-column:1 / -1}
+  .footer-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-brand,.footer-pay{grid-column:1 / -1}
+  .footer-pay{grid-template-columns:auto auto;justify-content:start;align-items:center}
+  .footer-pay h3{grid-column:1 / -1;margin-bottom:0}
 }
 @media (max-width:767px){
   .hero-inner{min-height:0;justify-content:flex-start;padding-block:28px calc(min(104vw,620px) + 8px)}
@@ -425,6 +440,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   .add{width:40px;height:40px;right:8px;bottom:8px}
   .wa-label{display:none}
   .footer-grid{grid-template-columns:1fr}
+  .footer-pay{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
@@ -518,6 +534,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .ship tbody th{font-weight:500;color:var(--ink-strong)}
 .ship td:last-child{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .ship tbody tr:last-child th,.ship tbody tr:last-child td{border-bottom:0}
+.ship td.calc{font-weight:500;color:var(--muted)}
+.a a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .note{font-size:14px;color:var(--muted)!important;display:flex;gap:8px;align-items:center}
 .note::before{content:"";width:8px;height:8px;border-radius:999px;background:#A5F500;flex:none;box-shadow:0 0 0 3px rgba(165,245,0,.25)}
 
@@ -599,7 +617,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 <symbol id="i-envelope-simple" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
 </svg>
 
-<div class="topbar">Despacho a todo Chile · Retiro en punto sin costo</div>
+<div class="topbar">Despacho a todo Chile</div>
 
 <div id="sentinel" aria-hidden="true" style="position:absolute;top:0;height:120px;width:1px"></div>
 
@@ -676,12 +694,12 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
         <p class="t-label">Temas</p>
         <ul>
           <li><a href="#t-pedidos" data-topic="pedidos" aria-current="true"><span class="ti" style="--c:#004AAD;--fg:#fff"><svg class="icon-sm"><use href="#i-handbag"/></svg></span><span class="tn">Pedidos</span><span class="tc" data-count="pedidos">3</span></a></li>
-          <li><a href="#t-despacho" data-topic="despacho"><span class="ti" style="--c:#C4FEE0;--fg:#0A2B63"><svg class="icon-sm"><use href="#i-truck"/></svg></span><span class="tn">Despacho y entregas</span><span class="tc" data-count="despacho">3</span></a></li>
+          <li><a href="#t-despacho" data-topic="despacho"><span class="ti" style="--c:#C4FEE0;--fg:#0A2B63"><svg class="icon-sm"><use href="#i-truck"/></svg></span><span class="tn">Despacho y entregas</span><span class="tc" data-count="despacho">2</span></a></li>
           <li><a href="#t-cambios" data-topic="cambios"><span class="ti" style="--c:#A5F500;--fg:#0A2B63"><svg class="icon-sm"><use href="#i-arrows-counter-clockwise"/></svg></span><span class="tn">Cambios y devoluciones</span><span class="tc" data-count="cambios">3</span></a></li>
           <li><a href="#t-productos" data-topic="productos"><span class="ti" style="--c:#FFEE2A;--fg:#0A2B63"><svg class="icon-sm"><use href="#i-cube"/></svg></span><span class="tn">Productos y stock</span><span class="tc" data-count="productos">2</span></a></li>
           <li><a href="#t-pagos" data-topic="pagos"><span class="ti" style="--c:#8FD3F4;--fg:#0A2B63"><svg class="icon-sm"><use href="#i-credit-card"/></svg></span><span class="tn">Pagos</span><span class="tc" data-count="pagos">2</span></a></li>
         </ul>
-        <p class="t-total"><span id="tTotal">13</span> preguntas en total</p>
+        <p class="t-total"><span id="tTotal">12</span> preguntas en total</p>
       </nav>
     </aside>
 
@@ -690,34 +708,28 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
           <header class="g-head"><span class="ti big" style="--c:#004AAD;--fg:#fff"><svg class="icon"><use href="#i-handbag"/></svg></span><h2 id="h-pedidos">Pedidos</h2><span class="g-count" data-gcount="pedidos">3 preguntas</span></header>
           <details class="qa" open>
             <summary><span class="q">¿Necesito crear una cuenta para comprar?</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="a"><p>No. Puedes comprar como invitado dejando solo tu correo y la dirección de despacho. La cuenta sirve para guardar direcciones, revisar el estado de tus pedidos y pedir un cambio sin escribirnos.</p></div>
+            <div class="a"><p>No. Puedes comprar como invitado dejando solo tu correo y la dirección de despacho. La cuenta sirve para guardar direcciones, revisar el estado de tus pedidos y gestionar cambios.</p></div>
           </details>
           <details class="qa">
             <summary><span class="q">¿Cómo sé que mi pedido quedó confirmado?</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="a"><p>Apenas se aprueba el pago te llega un correo con el número de pedido y el detalle de la compra. Si no lo ves en unos minutos, revisa la carpeta de spam o escríbenos con el correo que usaste.</p></div>
+            <div class="a"><p>Apenas se aprueba el pago te llega un correo con el número de pedido y el detalle de la compra. Si no lo ves en unos minutos escríbenos a <a href="mailto:contacto@todonovo.cl">contacto@todonovo.cl</a></p></div>
           </details>
           <details class="qa">
             <summary><span class="q">¿Puedo modificar o anular un pedido ya pagado?</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="a"><p>Sí, mientras no haya salido de bodega. Escríbenos por WhatsApp con el número de pedido dentro de las primeras 24 horas hábiles. Si ya fue despachado, puedes pedir un cambio o una devolución al recibirlo.</p></div>
+            <div class="a"><p>Sólo se puede modificar la dirección de envío si es errónea.</p><p>En relación con la anulación de un pedido ya pagado escríbenos por WhatsApp con el número de pedido dentro de las primeras 3 horas hábiles. Si ya fue despachado, puedes pedir un cambio o una devolución al recibirlo.</p></div>
           </details>
         </section>
         <section class="group" id="t-despacho" data-group="despacho" aria-labelledby="h-despacho">
-          <header class="g-head"><span class="ti big" style="--c:#C4FEE0;--fg:#0A2B63"><svg class="icon"><use href="#i-truck"/></svg></span><h2 id="h-despacho">Despacho y entregas</h2><span class="g-count" data-gcount="despacho">3 preguntas</span></header>
+          <header class="g-head"><span class="ti big" style="--c:#C4FEE0;--fg:#0A2B63"><svg class="icon"><use href="#i-truck"/></svg></span><h2 id="h-despacho">Despacho y entregas</h2><span class="g-count" data-gcount="despacho">2 preguntas</span></header>
           <details class="qa" open>
             <summary><span class="q">¿Cuánto cuesta y cuánto tarda el despacho?</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="a"><p>El costo y el plazo dependen de la zona. Los plazos se cuentan desde que el pedido sale de bodega, que ocurre dentro de 24 horas hábiles desde el pago.</p><div class="ship-wrap"><table class="ship">
-  <thead><tr><th scope="col">Zona</th><th scope="col">Plazo</th><th scope="col">Costo</th></tr></thead>
+            <div class="a"><p>Contamos con una aplicación multicourier integrada (Shipit) que permite que, cuando un cliente nos compra, los datos de envío se traspasan automáticamente al Courier más barato o rápido para su envío.</p><p>Las tarifas para considerar son las siguientes:</p><div class="ship-wrap"><table class="ship">
   <tbody>
-    <tr><th scope="row">Región Metropolitana</th><td>2 a 3 días hábiles</td><td>$3.990</td></tr>
-    <tr><th scope="row">Regiones</th><td>3 a 6 días hábiles</td><td>$5.490</td></tr>
-    <tr><th scope="row">Zonas extremas</th><td>6 a 10 días hábiles</td><td>$8.900</td></tr>
+    <tr><th scope="row">Región Metropolitana</th><td>$ 3.490</td></tr>
+    <tr><th scope="row">Regiones IV a IX</th><td>$ 4.990</td></tr>
+    <tr><th scope="row">Regiones extremas</th><td class="calc">Costo envío se calcula en Shipit</td></tr>
   </tbody>
-</table></div>
-<p class="note">Despacho sin costo en compras sobre $39.900. El retiro en punto es siempre gratis.</p></div>
-          </details>
-          <details class="qa">
-            <summary><span class="q">¿Hacen retiro en punto?</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="a"><p>Sí. Puedes retirar sin costo en nuestros puntos de Providencia y Maipú. Te avisamos por correo cuando el pedido esté listo, normalmente dentro de 24 horas hábiles.</p></div>
+</table></div><p>Contamos con promoción de Envío Gratuito para compras superiores a $29.990 aplicable a la Región Metropolitana.</p><p>En condiciones normales, el tiempo de tránsito en la Región Metropolitana para las entregas fluctúa entre 1 a 3 días hábiles. Las entregas en el resto del país varían entre 3 a 5 días hábiles.</p></div>
           </details>
           <details class="qa">
             <summary><span class="q">¿Despachan a todo Chile?</span><span class="pm" aria-hidden="true"></span></summary>
@@ -732,7 +744,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
           </details>
           <details class="qa">
             <summary><span class="q">¿Quién paga el despacho de una devolución?</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="a"><p>Si el producto llegó fallado o equivocado, lo pagamos nosotros. Si es un cambio por gusto, el despacho de vuelta corre por tu cuenta, salvo que lo entregues en uno de nuestros puntos de retiro.</p></div>
+            <div class="a"><p>Si el producto llegó fallado o equivocado, lo pagamos nosotros. Si es un cambio por gusto, el despacho de vuelta corre por tu cuenta.</p></div>
           </details>
           <details class="qa">
             <summary><span class="q">¿Qué pasa si el producto llega fallado o equivocado?</span><span class="pm" aria-hidden="true"></span></summary>
@@ -789,16 +801,23 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="img/logo.png" alt="TODONOVO" width="500" height="453" loading="lazy">
-        <div class="contact"><a href="mailto:ventastodonovo@gmail.com">ventastodonovo@gmail.com</a><a href="https://wa.me/56957998178" target="_blank" rel="noopener">WhatsApp +56 9 5799 8178</a></div>
+        <dl class="company">
+          <div><dt>Empresa:</dt><dd>NOELIA RETAMAL SpA</dd></div>
+          <div><dt>RUT:</dt><dd>78.498.269-6</dd></div>
+          <div><dt>WhatsApp:</dt><dd><a href="https://wa.me/56957998178" target="_blank" rel="noopener">+56 957998178</a></dd></div>
+          <div><dt>Correo:</dt><dd><a href="mailto:contacto@todonovo.cl">contacto@todonovo.cl</a></dd></div>
+        </dl>
+        <p class="hours"><span>Horario de atención:</span> Lunes a Viernes de 08:00 a 19:00 horas<br>Sábados de 09:00 a 14:00 horas</p>
         <div class="socials">
           <a href="https://www.instagram.com/todonovo.shop" target="_blank" rel="noopener" aria-label="Instagram de TODONOVO"><svg class="icon"><use href="#i-instagram-logo"/></svg></a>
           <a href="https://www.facebook.com/people/Todonovo/61594793080520/" target="_blank" rel="noopener" aria-label="Facebook de TODONOVO"><svg class="icon"><use href="#i-facebook-logo"/></svg></a>
           <a href="#pie" aria-label="TikTok de TODONOVO (enlace pendiente)"><svg class="icon"><use href="#i-tiktok-logo"/></svg></a>
         </div>
       </div>
-      <div><h3>Categorías</h3><ul><li><a href="tienda.html#viajes">Viajes</a></li><li><a href="tienda.html#outdoor">Outdoor</a></li><li><a href="tienda.html#hogar">Hogar</a></li><li><a href="tienda.html#bienestar">Bienestar</a></li><li><a href="tienda.html#tendencias">Tendencias</a></li></ul></div>
-      <div><h3>Información</h3><ul><li><a href="quienes-somos.html">Quiénes somos</a></li><li><a href="#faq">Preguntas frecuentes</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-      <div><h3>Legales</h3><ul><li><a href="#pie">Términos y condiciones</a></li><li><a href="#pie">Política de privacidad</a></li><li><a href="#pie">Despacho y entregas</a></li><li><a href="#pie">Cambios y devoluciones</a></li></ul></div>
+      <div><h3>Servicio al cliente</h3><ul><li><a href="politica-de-privacidad.html">Política de Privacidad</a></li><li><a href="politica-de-despacho.html">Política de Despacho</a></li><li><a href="cambios-y-devoluciones.html">Política de Devoluciones</a></li><li><a href="terminos-y-condiciones.html">Términos y condiciones</a></li></ul></div>
+      <div><h3>Mi cuenta</h3><ul><li><a href="#pie">Iniciar sesión</a></li><li><a href="#pie">Mis pedidos</a></li><li><a href="#pie">Sigue tu pedido</a></li></ul></div>
+      <div class="footer-about"><h3>Empresa</h3><ul><li><a href="quienes-somos.html">Quiénes somos</a></li></ul><p>Somos una tienda chilena, enfocada en ofrecer productos novedosos y funcionales a precios competitivos mediante una cadena de distribución optimizada y directa.</p></div>
+      <div class="footer-pay"><h3>Medios de pago</h3><img src="img/pago-medios.png" alt="Webpay Plus de Transbank, Visa, Mastercard, Redcompra y Mercado Pago" width="321" height="199" loading="lazy"><img src="img/pago-cuotas.png" alt="3 cuotas sin interés pagando con Visa, Mastercard, Cabal, American Express y Mercado Pago" width="550" height="318" loading="lazy"></div>
     </div>
     <div class="footer-bottom">© 2026 TODONOVO. Todos los derechos reservados. Desarrollado por Delta Digital</div>
   </div>

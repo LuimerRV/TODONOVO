@@ -318,7 +318,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 
 /* Footer */
 .footer{background:var(--surface-soft);border-top:1px solid var(--line);padding-block:56px 28px;margin-top:clamp(24px,4vw,48px)}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.footer-grid{display:grid;grid-template-columns:1.35fr .95fr .8fr 1.25fr 1fr;gap:32px}
 .footer-brand img{height:84px;width:auto}
 .footer-brand p{margin-top:14px;color:var(--muted);max-width:30ch}
 .contact{margin-top:14px;display:grid;gap:4px;font-size:15px;color:var(--ink-strong)}
@@ -327,7 +327,20 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .socials{display:flex;gap:8px;margin-top:16px}
 .socials a{width:40px;height:40px;border-radius:999px;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--ink)}
 .socials a:hover{border-color:var(--ink)}
-.footer h3{font-size:15px;color:var(--ink-strong);margin-bottom:12px}
+.footer h3{font-family:var(--font);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.company{margin:16px 0 0;display:grid;gap:4px;font-size:15px}
+.company div{display:flex;gap:6px;flex-wrap:wrap}
+.company dt{color:var(--muted)}
+.company dd{margin:0;font-weight:700;color:var(--ink-strong)}
+.company a{color:var(--ink-strong)}
+.company a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.hours{margin-top:12px;font-size:14px;line-height:1.55;color:var(--ink-strong)}
+.hours span{color:var(--muted)}
+.footer-about p{margin-top:12px;font-size:14px;line-height:1.6;color:var(--muted);max-width:34ch}
+.footer-pay{display:grid;gap:12px;align-content:start;justify-items:start}
+.footer-pay img{display:block;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+.footer-pay img:first-of-type{width:100%;max-width:150px}
+.footer-pay img:last-of-type{width:100%;max-width:150px;padding:0;overflow:hidden}
 .footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .footer ul a{color:var(--muted);font-size:15px}
 .footer ul a:hover{color:var(--ink)}
@@ -394,8 +407,10 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   .track{grid-auto-columns:calc((100% - 14px) / 2);gap:14px}
   .trust ul{grid-template-columns:repeat(2,1fr)}
   .social{grid-template-columns:repeat(2,1fr);gap:14px}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .footer-brand{grid-column:1 / -1}
+  .footer-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-brand,.footer-pay{grid-column:1 / -1}
+  .footer-pay{grid-template-columns:auto auto;justify-content:start;align-items:center}
+  .footer-pay h3{grid-column:1 / -1;margin-bottom:0}
 }
 @media (max-width:767px){
   .hero-inner{min-height:0;justify-content:flex-start;padding-block:28px calc(min(104vw,620px) + 8px)}
@@ -425,6 +440,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
   .add{width:40px;height:40px;right:8px;bottom:8px}
   .wa-label{display:none}
   .footer-grid{grid-template-columns:1fr}
+  .footer-pay{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
@@ -543,6 +559,8 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 .no-results p{color:var(--muted);max-width:36ch;font-family:var(--font-text)}
 
 .trust-shop{margin-top:0}
+.trust-shop ul{grid-template-columns:repeat(3,1fr)}
+@media (max-width:767px){.trust-shop ul{grid-template-columns:1fr}}
 .tool-right .f-open{display:none}
 /* Leyendas de filtros sin el espacio extra que agrega el fieldset */
 .f-group > legend{float:left}
@@ -740,7 +758,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
 <symbol id="i-sliders-horizontal" viewBox="0 0 256 256" fill="currentColor"><path d="M40,88H73a32,32,0,0,0,62,0h81a8,8,0,0,0,0-16H135a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16Zm64-24A16,16,0,1,1,88,80,16,16,0,0,1,104,64ZM216,168H199a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16h97a32,32,0,0,0,62,0h17a8,8,0,0,0,0-16Zm-48,24a16,16,0,1,1,16-16A16,16,0,0,1,168,192Z"/></symbol>
 </svg>
 
-<div class="topbar">Despacho a todo Chile · Retiro en punto sin costo · Hasta 3 cuotas sin interés</div>
+<div class="topbar">Despacho a todo Chile</div>
 
 <div id="sentinel" aria-hidden="true" style="position:absolute;top:0;height:120px;width:1px"></div>
 
@@ -875,7 +893,6 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     <div class="container">
       <ul>
         <li><span class="ic"><svg class="icon"><use href="#i-truck"/></svg></span><div><strong>Despacho a todo Chile</strong><span>Cobertura completa, incluidas zonas extremas</span></div></li>
-        <li><span class="ic"><svg class="icon"><use href="#i-map-pin"/></svg></span><div><strong>Retiro en punto</strong><span>Providencia y Maipú, sin costo, en 24 horas</span></div></li>
         <li><span class="ic"><svg class="icon"><use href="#i-chats-circle"/></svg></span><div><strong>Asesoría por WhatsApp</strong><span>Te ayudamos a elegir antes de comprar</span></div></li>
         <li><span class="ic"><svg class="icon"><use href="#i-arrows-counter-clockwise"/></svg></span><div><strong>Cambios en 10 días</strong><span>Devolución si no te sirve</span></div></li>
       </ul>
@@ -888,16 +905,23 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="img/logo.png" alt="TODONOVO" width="500" height="453" loading="lazy">
-        <div class="contact"><a href="mailto:ventastodonovo@gmail.com">ventastodonovo@gmail.com</a><a href="https://wa.me/56957998178" target="_blank" rel="noopener">WhatsApp +56 9 5799 8178</a></div>
+        <dl class="company">
+          <div><dt>Empresa:</dt><dd>NOELIA RETAMAL SpA</dd></div>
+          <div><dt>RUT:</dt><dd>78.498.269-6</dd></div>
+          <div><dt>WhatsApp:</dt><dd><a href="https://wa.me/56957998178" target="_blank" rel="noopener">+56 957998178</a></dd></div>
+          <div><dt>Correo:</dt><dd><a href="mailto:contacto@todonovo.cl">contacto@todonovo.cl</a></dd></div>
+        </dl>
+        <p class="hours"><span>Horario de atención:</span> Lunes a Viernes de 08:00 a 19:00 horas<br>Sábados de 09:00 a 14:00 horas</p>
         <div class="socials">
           <a href="https://www.instagram.com/todonovo.shop" target="_blank" rel="noopener" aria-label="Instagram de TODONOVO"><svg class="icon"><use href="#i-instagram-logo"/></svg></a>
           <a href="https://www.facebook.com/people/Todonovo/61594793080520/" target="_blank" rel="noopener" aria-label="Facebook de TODONOVO"><svg class="icon"><use href="#i-facebook-logo"/></svg></a>
           <a href="#pie" aria-label="TikTok de TODONOVO (enlace pendiente)"><svg class="icon"><use href="#i-tiktok-logo"/></svg></a>
         </div>
       </div>
-      <div><h3>Categorías</h3><ul><li><a href="#viajes">Viajes</a></li><li><a href="#outdoor">Outdoor</a></li><li><a href="#hogar">Hogar</a></li><li><a href="#bienestar">Bienestar</a></li><li><a href="#tendencias">Tendencias</a></li></ul></div>
-      <div><h3>Información</h3><ul><li><a href="quienes-somos.html">Quiénes somos</a></li><li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-      <div><h3>Legales</h3><ul><li><a href="#pie">Términos y condiciones</a></li><li><a href="#pie">Política de privacidad</a></li><li><a href="#pie">Despacho y entregas</a></li><li><a href="#pie">Cambios y devoluciones</a></li></ul></div>
+      <div><h3>Servicio al cliente</h3><ul><li><a href="politica-de-privacidad.html">Política de Privacidad</a></li><li><a href="politica-de-despacho.html">Política de Despacho</a></li><li><a href="cambios-y-devoluciones.html">Política de Devoluciones</a></li><li><a href="terminos-y-condiciones.html">Términos y condiciones</a></li></ul></div>
+      <div><h3>Mi cuenta</h3><ul><li><a href="#pie">Iniciar sesión</a></li><li><a href="#pie">Mis pedidos</a></li><li><a href="#pie">Sigue tu pedido</a></li></ul></div>
+      <div class="footer-about"><h3>Empresa</h3><ul><li><a href="quienes-somos.html">Quiénes somos</a></li></ul><p>Somos una tienda chilena, enfocada en ofrecer productos novedosos y funcionales a precios competitivos mediante una cadena de distribución optimizada y directa.</p></div>
+      <div class="footer-pay"><h3>Medios de pago</h3><img src="img/pago-medios.png" alt="Webpay Plus de Transbank, Visa, Mastercard, Redcompra y Mercado Pago" width="321" height="199" loading="lazy"><img src="img/pago-cuotas.png" alt="3 cuotas sin interés pagando con Visa, Mastercard, Cabal, American Express y Mercado Pago" width="550" height="318" loading="lazy"></div>
     </div>
     <div class="footer-bottom">© 2026 TODONOVO. Todos los derechos reservados. Desarrollado por Delta Digital</div>
   </div>
@@ -1108,7 +1132,7 @@ h1,h2,.tile h3{font-family:var(--font-display);font-weight:800;text-transform:up
           stockHTML(p) +
           '<button class="pdp-fav" type="button" data-fav="' + p.id + '" aria-pressed="false"><svg class="icon-sm"><use href="#i-heart"/></svg>Guardar en favoritos</button>' +
           '<hr>' + opts + buy +
-          '<ul class="buy-perks"><li><svg class="icon-sm"><use href="#i-truck"/></svg>Despacho a todo Chile o retiro en punto sin costo</li><li><svg class="icon-sm"><use href="#i-credit-card"/></svg>Hasta 3 cuotas sin interés</li><li><svg class="icon-sm"><use href="#i-arrows-counter-clockwise"/></svg>Cambios y devoluciones en 10 días</li></ul>' +
+          '<ul class="buy-perks"><li><svg class="icon-sm"><use href="#i-truck"/></svg>Despacho a todo Chile</li><li><svg class="icon-sm"><use href="#i-credit-card"/></svg>Hasta 3 cuotas sin interés</li><li><svg class="icon-sm"><use href="#i-arrows-counter-clockwise"/></svg>Cambios y devoluciones en 10 días</li></ul>' +
         '</div>' +
       '</div>' +
       '<section class="pdp-tabs" aria-label="Información del producto">' +
